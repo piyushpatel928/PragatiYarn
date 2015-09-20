@@ -1,0 +1,246 @@
+﻿@model PragatiYarn.Models.ViewModel.EditMaterialViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add New Material</title>
+
+    @*<link href="~/Content/css/bootstrap.css" rel="stylesheet" />*@
+    <link href="~/Content/css/960.css" rel="stylesheet" />
+    <link href="~/Content/css/template.css" rel="stylesheet" />
+    <link href="~/Content/css/colour.css" rel="stylesheet" />
+    <link href="~/Content/css/jmenu.css" rel="stylesheet" />
+    <script src="~/Content/script/jquery-1.10.2.js"></script>
+    <script src="~/Content/script/jquery-ui.js"></script>
+    <script src="~/Content/script/jMenu.jquery.js"></script>
+    <script src="~/Content/script/bootstrap.js"></script>
+    <script src="~/Content/script/jquery.validate.min.js"></script>
+    <script src="~/Content/script/jquery.validate.unobtrusive.min.js"></script>
+
+
+    <script type="text/javascript">
+        $(function () {
+
+            $("#jMenu").jMenu();
+
+            // more complex jMenu plugin called
+            $("#jMenu").jMenu({
+                openClick: false,
+                ulWidth: "10%",
+                effects: {
+                    effectSpeedOpen: 150,
+                    effectSpeedClose: 150,
+                    effectTypeOpen: 'slide',
+                    effectTypeClose: 'slide',
+                    effectOpen: 'linear',
+                    effectClose: 'linear'
+                },
+                TimeBeforeOpening: 100,
+                TimeBeforeClosing: 11,
+                animatedText: false,
+                paddingLeft: 1
+            });
+
+            
+        });
+
+
+    </script>
+
+    <style>
+        .btn {
+            display: inline-block;
+            padding: 6px 12px;
+            margin-bottom: 0;
+            font-size: 14px;
+            font-weight: normal;
+            line-height: 1.428571429;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            cursor: pointer;
+            background-image: none;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            -webkit-user-select: none;
+        }
+
+        .btn-primary {
+            color: #ffffff;
+            background-color: #428bca;
+            border-color: #357ebd;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 id="head">Pragati Yarn  <a href="/Home/LogOut" style="float: right">Log Out</a></h1>
+    @*<ul id="navigation">
+        <li><a href="/Home/AddCustomer">Add Customer</a></li>
+        <li><a href="/Home/ViewCustomers">View All Customers</a></li>
+        <li><a href="/Home/AddStock">Add Stocks</a></li>
+        <li><a href="/Home/ViewStocks">View Stocks</a></li>S
+        <li><span class="active">Add New Material</span></li>
+         @if (int.Parse(Session["UserId"].ToString()) == 1)
+        {
+        <li><a href="/Home/AddUser">Add New User</a></li>
+            
+        }
+    </ul>*@
+    <div id="navigation">   
+    <ul id="jMenu">
+        <li><a>Customer</a>
+            <ul>
+                <li><a href="/Home/ViewCustomers" style="text-decoration: none">View Customers</a></li>
+                    <li><a href="/Home/AddCustomer" style="text-decoration: none">Add Customer</a></li>
+                    <li><a href="/Home/Payment" style="text-decoration: none">Add Customer Payment</a></li>
+                    <li><a href="/Home/CustomerPayment" style="text-decoration: none">Customer Credit Report</a></li>
+                    <li><a href="/Home/PaymentHistory" style="text-decoration: none">Payment History</a></li>
+                    <li><a href="/Home/AddCustomerCredit" style="text-decoration: none">Add Customer Credit</a></li>
+                
+            </ul>
+        </li>
+         <li><a>Stocks</a>
+            <ul>
+                <li><a href="/Home/AddStock" style="text-decoration:none">Add Stocks</a></li>
+                <li><a href="/Home/ViewStocks" style="text-decoration:none">View Stocks</a></li>
+                
+            </ul>
+        </li>
+        <li><a>Materials</a>
+            <ul>
+                <li><a href="/Home/AddNewMaterial" style="text-decoration:none">Add Material</a></li>
+                <li><a href="/Home/ViewMaterials" style="text-decoration:none">View Materials</a></li>
+                
+            </ul>
+        </li>
+        @if (int.Parse(Session["UserId"].ToString()) == 1)
+        {
+        <li><a href="/Home/AddUser" style="text-decoration:none">Add New User</a></li>
+            
+        }
+         <li><a>Sale</a>
+                <ul>
+                    <li><a href="/Home/sales" style="text-decoration: none">sales</a></li>
+                    <li><a href="/Home/ReturnSales" style="text-decoration: none">Return Sales</a></li>
+                     <li><a href="/Home/DailyInvoice" style="text-decoration: none">Daily Invoice</a></li>
+                    <li><a href="/Home/MonthlyInvoice" style="text-decoration: none">Monthly Invoice</a></li>
+
+                </ul>
+            </li>
+          @if (int.Parse(Session["UserId"].ToString()) == 1)
+          {
+                <li><a href="/Home/ChangeRate" style="text-decoration: none">Change Rate</a></li>
+          }
+    </ul>
+</div>
+
+
+    <div id="content" class="container_16 clearfix">
+
+        @using (Html.BeginForm("EditMaterial", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="grid_16">
+                <h2>Edit Material</h2>
+            </div>
+             <span style="color: green; font-size: 18px;">@ViewBag.success </span>
+            <br />
+            <span style="color: red; font-size: 18px;">@ViewBag.Message</span>
+            <br />
+            
+            <div class="grid_5">
+                <p>
+                    <label for="title">Select Material Type:</label>
+                    <select id="main_material" name="MaterialId">
+                        <option value="@Model.MaterialId">@Model.MaterialName</option>
+                    </select><br />
+                    
+                    <br />
+
+                </p>
+            </div>
+            
+            <div class="grid_16" id="submaterial" style="display: none">
+                <p>
+                    <label for="title">Select Sub Material Type:</label>
+                    <select id="sub_material" name="SubMaterialId" style="width:29%;">
+                        <option value="@Model.SubMaterialId">@Model.SubMaterialName</option>
+                    </select><br />
+                    <br />
+
+                </p>
+            </div>
+            
+            <div class="grid_16">
+                <p>
+                    <label for="title">Material Code:</label>
+                    @*<input type="text" id="MaterialCode" name="MaterialCode" style="width:29%;" />*@
+                    @Html.EditorFor(a => a.MaterialCode,new {@id="MaterialCode",@disabled="disabled",@style="width:270px;" } )
+                    <br />
+                    <br />
+                    <br />
+
+                </p>
+            </div>
+            
+            
+            <div class="grid_16">
+                <p>
+                    <label for="title">Material Old Image:</label>
+                    <img alt='#' height='50' width='100' src='@Url.Content(Model.MaterialImagePath)' style='vertical-align: middle'; />
+                    <br />
+                    <br />
+
+                </p>
+            </div>
+            
+            <div class="grid_16">
+                <p>
+                    <label for="title">Material New Image:</label>
+                    <input type="file" name="MaterialImage" style="width:29%;" /><br />
+                    <br />
+
+                </p>
+            </div>
+            
+            <div class="grid_16" id="mat_price" style="display: none">
+                <p>
+                    <label for="title">Material Price:</label>
+                    <input type="text" id="Price" name="Price" style="width:29%;" /><br />
+                    <br />
+
+                </p>
+
+
+            </div>
+            <div class="grid_16">
+                
+                    <p class="submit">
+                        <button type="submit" class="btn btn-primary" value="Add Customer">Update Material</button>
+                    </p>
+                
+            </div>
+@*<span>Select Material Type:
+            <select id="main_material" name="MaterialId"></select></span><br /><br />
+
+            <span id="submaterial" style="display: none">Select Sub Material Type:
+            <select id="sub_material" name="SubMaterialId"></select></span><br /><br />
+
+        <span>Material Code:</span> <input type="text" id="code" name="MaterialCode"/><br />
+        <span>Material Image:</span> <input type="file" name="MaterialImage" name="MaterialImage"/><br />
+            <span id="mat_price" style="display:none">Material Price: <input type="text" id="Price" name="Price"/></span><br />
+            
+            <input type="submit"  value="Submit"/>*@
+        }
+
+    </div>
+
+
+</body>
+</html>
+

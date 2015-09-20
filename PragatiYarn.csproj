@@ -1,0 +1,551 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D05970D1-0E8D-4281-AAFD-FF888953C943}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PragatiYarn</RootNamespace>
+    <AssemblyName>PragatiYarn</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity">
+      <HintPath>..\packages\Unity.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration">
+      <HintPath>..\packages\Unity.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.6\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20710.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Mvc3">
+      <HintPath>..\packages\Unity.Mvc3.1.2\lib\net40\Unity.Mvc3.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Controllers\AddStockApiController.cs" />
+    <Compile Include="Controllers\getAllCustomerApiController.cs" />
+    <Compile Include="Controllers\getAllMaterialApiController.cs" />
+    <Compile Include="Controllers\GetAllMaterialForRateChangeApiController.cs" />
+    <Compile Include="Controllers\GetAllMaterialforStockApiController.cs" />
+    <Compile Include="Controllers\GetCustomerPaymentController.cs" />
+    <Compile Include="Controllers\GetDailyInvoiceApiController.cs" />
+    <Compile Include="Controllers\GetMaterialDetailForSalesAPIController.cs" />
+    <Compile Include="Controllers\GetMaterialForReturnSaleApiController.cs" />
+    <Compile Include="Controllers\GetRatesApiController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ViewAllStocksApiController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Abstract\IUserRepository.cs" />
+    <Compile Include="Models\DB\AllMaterial.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DB\Customer.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DB\CustomerPaidHistory.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DB\CustomerPayableAmount.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DB\Invoice.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DB\MaterialType.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DB\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DB\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DB\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DB\MonthlyInvoice.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DB\Sale.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DB\Stock.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DB\SubMaterialType.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DB\Sub_Accralic.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DB\Sub_FizingPaper.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DB\Sub_Kasab.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DB\User.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Maps\UserMaps.cs" />
+    <Compile Include="Models\Repository\UserRepository.cs" />
+    <Compile Include="Models\ViewModel\AddCreditAmountViewModel.cs" />
+    <Compile Include="Models\ViewModel\AddCustomerViewModel.cs" />
+    <Compile Include="Models\ViewModel\AddMaterialViewModel.cs" />
+    <Compile Include="Models\ViewModel\AddSalesViewModel.cs" />
+    <Compile Include="Models\ViewModel\AddStockViewModel.cs" />
+    <Compile Include="Models\ViewModel\AddUserViewModel.cs" />
+    <Compile Include="Models\ViewModel\AllCustomerCreditViewModel.cs" />
+    <Compile Include="Models\ViewModel\ChalansViewModel.cs" />
+    <Compile Include="Models\ViewModel\ChalanViewModel.cs" />
+    <Compile Include="Models\ViewModel\CustomerCreditPaymentViewModel.cs" />
+    <Compile Include="Models\ViewModel\CustomerCreditViewModel.cs" />
+    <Compile Include="Models\ViewModel\EditMaterialViewModel.cs" />
+    <Compile Include="Models\ViewModel\GetAllMaterialForSalesViewModel.cs" />
+    <Compile Include="Models\ViewModel\GetAllMaterialForStockViewModel.cs" />
+    <Compile Include="Models\ViewModel\GetMaterialViewModel.cs" />
+    <Compile Include="Models\ViewModel\GetSubmaterialViewModel.cs" />
+    <Compile Include="Models\ViewModel\ItemsViewModel.cs" />
+    <Compile Include="Models\ViewModel\LoginViewModel.cs" />
+    <Compile Include="Models\ViewModel\MaterialsViewModel.cs" />
+    <Compile Include="Models\ViewModel\MonthlyInvoiceViewModel.cs" />
+    <Compile Include="Models\ViewModel\MonthlyInvoice_Down_ReturnViewModel.cs" />
+    <Compile Include="Models\ViewModel\MonthlyInvoice_Down_ViewModel.cs" />
+    <Compile Include="Models\ViewModel\PaymentHistoryViewModel.cs" />
+    <Compile Include="Models\ViewModel\RateViewModel.cs" />
+    <Compile Include="Models\ViewModel\SalesItemViewModel.cs" />
+    <Compile Include="Models\ViewModel\SubItemsViewModel.cs" />
+    <Compile Include="Models\ViewModel\ViewAllStocksViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Content\css\960.css" />
+    <Content Include="Content\css\960_1.css" />
+    <Content Include="Content\css\animate-custom.css" />
+    <Content Include="Content\css\bootstrap.css" />
+    <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\bootstrap.new.css" />
+    <Content Include="Content\css\bootstrap.print.css" />
+    <Content Include="Content\css\camera.css" />
+    <Content Include="Content\css\catalogsale.css" />
+    <Content Include="Content\css\cloud-zoom.css" />
+    <Content Include="Content\css\colour.css" />
+    <Content Include="Content\css\compressed.css" />
+    <Content Include="Content\css\counter015.css" />
+    <Content Include="Content\css\demo.css" />
+    <Content Include="Content\css\demo_page.css" />
+    <Content Include="Content\css\demo_table.css" />
+    <Content Include="Content\css\extra_style.css" />
+    <Content Include="Content\css\fluid.css" />
+    <Content Include="Content\css\font-awesome.css" />
+    <Content Include="Content\css\fonts\BebasNeue-webfont.eot" />
+    <Content Include="Content\css\fonts\BebasNeue-webfont.svg" />
+    <Content Include="Content\css\fonts\BebasNeue-webfont.ttf" />
+    <Content Include="Content\css\fonts\BebasNeue-webfont.woff" />
+    <Content Include="Content\css\fonts\dazS1PrQQuCxC3iOAJFEJa6JHp92iES8exGTOIyTn1A.woff" />
+    <Content Include="Content\css\fonts\Dharma Type Font License.txt" />
+    <Content Include="Content\css\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\css\fonts\fontomas-webfont.eot" />
+    <Content Include="Content\css\fonts\fontomas-webfont.svg" />
+    <Content Include="Content\css\fonts\fontomas-webfont.ttf" />
+    <Content Include="Content\css\fonts\fontomas-webfont.woff" />
+    <Content Include="Content\css\fonts\franchise-bold-webfont.eot" />
+    <Content Include="Content\css\fonts\franchise-bold-webfont.svg" />
+    <Content Include="Content\css\fonts\franchise-bold-webfont.ttf" />
+    <Content Include="Content\css\fonts\franchise-bold-webfont.woff" />
+    <Content Include="Content\css\fonts\y7lebkjgREBJK96VQi37ZmOb2gHztoQeulij-1lvl-8.woff" />
+    <Content Include="Content\css\fonts\zjBCKJs0bE-LvM0teIV5VPesZW2xOQ-xsNqO47m55DA.woff" />
+    <Content Include="Content\css\frame.css" />
+    <Content Include="Content\css\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\css\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\css\images\ui-icons_222222_256x240.jpg" />
+    <Content Include="Content\css\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\css\jmenu.css" />
+    <Content Include="Content\css\jquery-ui.css" />
+    <Content Include="Content\css\jquery.bxslider.css" />
+    <Content Include="Content\css\jquery.dataTables.css" />
+    <Content Include="Content\css\main.css" />
+    <Content Include="Content\css\photoswipe.css" />
+    <Content Include="Content\css\print.css" />
+    <Content Include="Content\css\reset-min.css" />
+    <Content Include="Content\css\reset.css" />
+    <Content Include="Content\css\responsive.css" />
+    <Content Include="Content\css\reveal.css" />
+    <Content Include="Content\css\Site.css" />
+    <Content Include="Content\css\Site.print.css" />
+    <Content Include="Content\css\style.css" />
+    <Content Include="Content\css\styles.new.css" />
+    <Content Include="Content\css\superfish.css" />
+    <Content Include="Content\css\template.css" />
+    <Content Include="Content\css\text.css" />
+    <Content Include="Content\css\widget120.css" />
+    <Content Include="Content\css\widgets.css" />
+    <Content Include="Content\font\BebasNeue-webfont.eot" />
+    <Content Include="Content\font\BebasNeue-webfont.svg" />
+    <Content Include="Content\font\BebasNeue-webfont.ttf" />
+    <Content Include="Content\font\BebasNeue-webfont.woff" />
+    <Content Include="Content\font\dazS1PrQQuCxC3iOAJFEJa6JHp92iES8exGTOIyTn1A.woff" />
+    <Content Include="Content\font\Dharma Type Font License.txt" />
+    <Content Include="Content\font\fontawesome-webfont.woff" />
+    <Content Include="Content\font\fontomas-webfont.eot" />
+    <Content Include="Content\font\fontomas-webfont.svg" />
+    <Content Include="Content\font\fontomas-webfont.ttf" />
+    <Content Include="Content\font\fontomas-webfont.woff" />
+    <Content Include="Content\font\franchise-bold-webfont.eot" />
+    <Content Include="Content\font\franchise-bold-webfont.svg" />
+    <Content Include="Content\font\franchise-bold-webfont.ttf" />
+    <Content Include="Content\font\franchise-bold-webfont.woff" />
+    <Content Include="Content\font\y7lebkjgREBJK96VQi37ZmOb2gHztoQeulij-1lvl-8.woff" />
+    <Content Include="Content\font\zjBCKJs0bE-LvM0teIV5VPesZW2xOQ-xsNqO47m55DA.woff" />
+    <Content Include="Content\images\bg.jpg" />
+    <Content Include="Content\images\body.png" />
+    <Content Include="Content\images\box-h2.png" />
+    <Content Include="Content\images\buy.jpg" />
+    <Content Include="Content\images\download %281%29.gif" />
+    <Content Include="Content\images\download %281%29.png" />
+    <Content Include="Content\images\download.gif" />
+    <Content Include="Content\images\download.png" />
+    <Content Include="Content\images\edit.png" />
+    <Content Include="Content\images\error.png" />
+    <Content Include="Content\images\gradient.png" />
+    <Content Include="Content\images\ico17.png" />
+    <Content Include="Content\images\ico18.png" />
+    <Content Include="Content\images\logo.jpg" />
+    <Content Include="Content\images\logo.png" />
+    <Content Include="Content\images\MyPragatiImage.png" />
+    <Content Include="Content\images\no-Image.png" />
+    <Content Include="Content\images\top-bg.jpg" />
+    <Content Include="Content\images\trash.png" />
+    <Content Include="Content\images\widget016_top.gif" />
+    <Content Include="Content\images\__utm.gif" />
+    <Content Include="Content\img\body.png" />
+    <Content Include="Content\img\gradient.png" />
+    <Content Include="Content\script\application2.js" />
+    <Content Include="Content\script\bootstrap.js" />
+    <Content Include="Content\script\builder.js" />
+    <Content Include="Content\script\camera.js" />
+    <Content Include="Content\script\carousel.js" />
+    <Content Include="Content\script\ccard.js" />
+    <Content Include="Content\script\cloud-zoom.1.0.2.min.js" />
+    <Content Include="Content\script\cloudflare.min.js" />
+    <Content Include="Content\script\controls.js" />
+    <Content Include="Content\script\cookies.js" />
+    <Content Include="Content\script\counter017.js" />
+    <Content Include="Content\script\dragdrop.js" />
+    <Content Include="Content\script\effects.js" />
+    <Content Include="Content\script\form.js" />
+    <Content Include="Content\script\ga.js" />
+    <Content Include="Content\script\html5.js" />
+    <Content Include="Content\script\jMenu.jquery.js" />
+    <Content Include="Content\script\JQDataTable.js" />
+    <Content Include="Content\script\jquery-1.10.2.js" />
+    <Content Include="Content\script\jquery-ui.js" />
+    <Content Include="Content\script\jquery.bxslider.js" />
+    <Content Include="Content\script\jquery.carouFredSel-6.2.1.js" />
+    <Content Include="Content\script\jquery.easing.1.3.js" />
+    <Content Include="Content\script\jquery.mobile.customized.min.js" />
+    <Content Include="Content\script\jquery.printPage.js" />
+    <Content Include="Content\script\jquery.shapeshift.js" />
+    <Content Include="Content\script\jquery.touch-punch.min.js" />
+    <Content Include="Content\script\jquery.touchSwipe.js" />
+    <Content Include="Content\script\jquery.validate.min.js" />
+    <Content Include="Content\script\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Content\script\js.js" />
+    <Content Include="Content\script\prototype.js" />
+    <Content Include="Content\script\scripts.js" />
+    <Content Include="Content\script\slider.js" />
+    <Content Include="Content\script\sounds.js" />
+    <Content Include="Content\script\superfish.js" />
+    <Content Include="Content\script\translate.js" />
+    <Content Include="Content\script\validation.js" />
+    <Content Include="CustomerImage\2012-05-06-06635563320341704308.jpg" />
+    <Content Include="CustomerImage\IMAG096635571875127067785.jpg" />
+    <Content Include="CustomerImage\Jellyfis635354140947324891.jpg" />
+    <Content Include="CustomerImage\Koal635354143328171067.jpg" />
+    <Content Include="Global.asax" />
+    <Content Include="img\common\arrow.gif" />
+    <Content Include="img\common\banner.jpg" />
+    <Content Include="img\common\content_bg.gif" />
+    <Content Include="img\common\def_parallels_logo.gif" />
+    <Content Include="img\common\def_plesk_logo.gif" />
+    <Content Include="img\common\footer_bg.gif" />
+    <Content Include="img\common\footer_right_bg.png" />
+    <Content Include="img\common\pdfm_box.jpg" />
+    <Content Include="img\common\pws_box.jpg" />
+    <Content Include="img\common\top_bg.gif" />
+    <Content Include="img\glyph\btn_aspdotnet_bg.gif" />
+    <Content Include="img\glyph\btn_asp_bg.gif" />
+    <Content Include="img\glyph\btn_bg-disabled.gif" />
+    <Content Include="img\glyph\btn_bg.gif" />
+    <Content Include="img\glyph\btn_coldfusion_bg.gif" />
+    <Content Include="img\glyph\btn_ok_bg.gif" />
+    <Content Include="img\glyph\btn_perl_bg.gif" />
+    <Content Include="img\glyph\btn_php_bg.gif" />
+    <Content Include="img\glyph\btn_python_bg.gif" />
+    <Content Include="img\icons\fail.gif" />
+    <Content Include="img\icons\success.gif" />
+    <Content Include="img\icons\tabs\tabs_bg.png" />
+    <Content Include="Unity.Mvc3.README.txt" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\LogIn.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\AddCustomer.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\ViewCustomers.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\EditCustomer.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\AddUser.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\AddNewMaterial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\ViewMaterials.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\AddStock.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\ViewStocks.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Sales.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\ReturnSales.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\CustomerPayment.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Pay.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\PaymentHistory.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Chalan.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\RetunSaleChalan.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\DailyChalan.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\MonthlyChalan.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\DailyInvoice.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\MonthlyInvoice.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\ChangeRate.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\AddStockSample.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Models\DB\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\DB\Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\DB\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\DB\Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+    <None Include="Properties\PublishProfiles\pragati.pubxml" />
+    <Content Include="Views\Home\AddCustomerCredit.cshtml" />
+    <Content Include="Views\Home\Payment.cshtml" />
+    <Content Include="Views\Home\EditMaterial.cshtml" />
+    <Content Include="Views\Home\CustomersCreditReport.cshtml" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:25512/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

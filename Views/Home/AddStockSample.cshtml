@@ -1,0 +1,772 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AddStockSample</title>
+    @*<link href="~/Content/css/bootstrap.css" rel="stylesheet" />*@
+    <link href="~/Content/css/960.css" rel="stylesheet" />
+    <link href="~/Content/css/template.css" rel="stylesheet" />
+    <link href="~/Content/css/colour.css" rel="stylesheet" />
+    <link href="~/Content/css/jmenu.css" rel="stylesheet" />
+    <script src="~/Content/script/jquery-1.10.2.js"></script>
+    <script src="~/Content/script/jquery-ui.js"></script>
+    <script src="~/Content/script/jMenu.jquery.js"></script>
+    <script src="~/Content/script/jquery.touch-punch.min.js"></script>
+    <script src="~/Content/script/jquery.shapeshift.js"></script>
+    <script src="~/Content/script/bootstrap.js"></script>
+    <script src="~/Content/script/jquery.validate.min.js"></script>
+    <script src="~/Content/script/jquery.validate.unobtrusive.min.js"></script>
+    <script type="text/javascript">
+        var MainMaterialId;
+        var subMaterialId;
+        var SelectedMatId;
+        var matcode;
+        var imgsrc;
+        var UserId = parseInt(@Session["UserId"].ToString());
+        console.log(UserId);
+        var MatNameArray = new Array();
+        $(function () {
+            $("#jMenu").jMenu();
+            $("#piece").val("");
+            // more complex jMenu plugin called
+            $("#jMenu").jMenu({
+                openClick: false,
+                ulWidth: "10%",
+                effects: {
+                    effectSpeedOpen: 150,
+                    effectSpeedClose: 150,
+                    effectTypeOpen: 'slide',
+                    effectTypeClose: 'slide',
+                    effectOpen: 'linear',
+                    effectClose: 'linear'
+                },
+                TimeBeforeOpening: 100,
+                TimeBeforeClosing: 11,
+                animatedText: false,
+                paddingLeft: 1
+            });
+
+            $.ajax({
+                url: "../../api/getallmaterialforstockapi/Get/",
+                type: "GET",
+                dataType: 'json',
+                success: function (data) {
+                    $("#main_material").append("<option>Select Type Of Material</option>");
+                    for (var i in data) {
+                        $("#main_material").append("<option value='" + data[i].MaterialTypeId + "'>" + data[i].MaterialTypeName + " </option>")
+                    }
+                }
+            });
+            $(document).on('change', "#main_material", function () {
+                MainMaterialId = $(this).val();
+                $("#select_material").empty();
+                $("#selectmaterial").hide();
+
+                $("#sub_material").empty();
+                $("#submaterial").hide();
+
+                $("#select_material").show();
+                $("#selected_material").empty();
+                if ($(this).val() == 3) {
+                    $("#mat_weight").hide();
+                    $("#weight").val("");
+                    $("#piece").val("");
+                    $("#mat_piece").show();
+                    var c = $(this).val();
+
+                    $.ajax({
+                        url: "../../api/getallmaterialforstockapi/Get/",
+                        data: { "TypeId": $(this).val() },
+                        type: "GET",
+                        dataType: 'json',
+                        success: function (data) {
+                            $("#submaterial").show();
+                            $("#sub_material").append("<option> Select Your Sub Material Type </option>");
+                            for (var i in data) {
+                                $("#sub_material").append("<option value='" + data[i].SubMaterialTypeId + "'>" + data[i].SubMaterialTypeName + " </option>")
+                            }
+
+                        }
+                    });
+
+                }
+                else if ($(this).val() == 1 || $(this).val() == 4) {
+
+                    var c = $(this).val();
+                    $("#mat_piece").show();
+                    $("#weight").val("");
+                    $("#piece").val("");
+                    $("#mat_weight").hide();
+                    $.ajax({
+                        url: "../../api/getallmaterialforstockapi/Get/",
+                        data: { "TypeId": $(this).val() },
+                        type: "GET",
+                        dataType: 'json',
+                        success: function (data) {
+
+                            $("#submaterial").show();
+                            $("#sub_material").append("<option>Select Your Sub Material Type </option>");
+                            for (var i in data) {
+                                $("#sub_material").append("<option value='" + data[i].SubMaterialTypeId + "'>" + data[i].SubMaterialTypeName + " </option>");
+                            }
+
+                        }
+                    });
+
+                }
+                else if ($(this).val() == 2) {
+                    var MaterialTypeid = $("#main_material").val();
+                    var c = $(this).val();
+                    $("#mat_piece").show();
+                    $("#weight").val("");
+                    $("#piece").val("");
+                    $("#mat_weight").hide();
+                    $.ajax({
+                        url: "../../api/getallmaterialforstockapi/Get/",
+                        data: { "TypeId": $(this).val() },
+                        type: "GET",
+                        dataType: 'json',
+                        success: function (data) {
+
+                            $("#submaterial").show();
+
+                            for (var i in data) {
+                                $("#sub_material").append("<option value='" + data[i].SubMaterialTypeId + "'>" + data[i].SubMaterialTypeName + " </option>");
+                            }
+
+                        }
+                    });
+
+
+                    $.ajax({
+                        url: "../../api/getallmaterialforstockapi/Get/",
+                        data: { "TypeId": MaterialTypeid, "SubMaterialId": 0, "spd": "abcd" },
+                        type: "GET",
+                        dataType: 'json',
+                        success: function (data) {
+
+                            $("#selectmaterial").show();
+                            //$("#select_material").append("<option> <a href='#'><img alt='#' src='../MaterialImage/Jellyfis635371276635438443.jpg' /></a></option>");
+                            var htmlstr = "<ul class='grid'>";
+                            for (var i in data) {
+                                var path = data[i].MaterialImage;
+                                var newpath = path.substring(1);
+
+
+                                htmlstr += "<li id='selected_mat" + data[i].MaterialId + "' class='selectedmat'  style='text-decoration:none'><label id='selected_code" + data[i].MaterialId + "' class='selected_code' style='font-size:18px;width:31%;margin-left: -8%;'> " + data[i].MaterialCode + "</label>&nbsp;&nbsp;<img id='selected_src" + data[i].MaterialId + "' alt='#' height='50' width='100' src='" + newpath + "' style='vertical-align: middle;' /> </li>";
+
+
+                                //else if (i % 5 == 0) {
+                                //    $("#select_material").append("<br><br><a id='selected_mat" + data[i].MaterialId + "' class='selectedmat' href='#' style='text-decoration:none'><label id='selected_code" + data[i].MaterialId + "' class='selected_code' style='font-size:18px;width:6%;'> " + data[i].MaterialCode + "</label>&nbsp;&nbsp;<img id='selected_src" + data[i].MaterialId + "' alt='#' height='50' width='100' src='" + newpath + "' style='vertical-align: middle;' /> </a>&nbsp;&nbsp;");
+                                //}
+                                //else {
+                                //    $("#select_material").append("<a id='selected_mat" + data[i].MaterialId + "' class='selectedmat' style='text-decoration:none' href='#'><label id='selected_code" + data[i].MaterialId + "' class='selected_code' style='font-size:18px;width:6%;'> " + data[i].MaterialCode + "</label>&nbsp;&nbsp;<img id='selected_src" + data[i].MaterialId + "' alt='#' height='50' width='100' src='" + newpath + "' style='vertical-align: middle;' /> </a>&nbsp;&nbsp;");
+                                //}
+
+                            }
+                            htmlstr += "</ul>";
+                            $("#select_material").append(htmlstr);
+                            //for (var i in data) {
+                            //    var path = data[i].MaterialImage;
+                            //    var newpath = path.substring(1);
+
+                            //    if (i == 0) {
+                            //        $("#select_material").append("<a id='selected_mat" + data[i].MaterialId + "' class='selectedmat' href='#' style='text-decoration:none'><label id='selected_code" + data[i].MaterialId + "' class='selected_code' style='font-size:18px;width:6%;'> " + data[i].MaterialCode + "</label>&nbsp;&nbsp;<img id='selected_src" + data[i].MaterialId + "' alt='#' height='50' width='100' src='" + newpath + "' style='vertical-align: middle;' /> </a>&nbsp;&nbsp;");
+                            //    }
+
+                            //    else if (i % 5 == 0) {
+                            //        $("#select_material").append("<br><br><a id='selected_mat" + data[i].MaterialId + "' class='selectedmat' href='#' style='text-decoration:none'><label id='selected_code" + data[i].MaterialId + "' class='selected_code' style='font-size:18px;width:6%;'> " + data[i].MaterialCode + "</label>&nbsp;&nbsp;<img id='selected_src" + data[i].MaterialId + "' alt='#' height='50' width='100' src='" + newpath + "' style='vertical-align: middle;' /> </a>&nbsp;&nbsp;");
+                            //    }
+                            //    else {
+                            //        $("#select_material").append("<a id='selected_mat" + data[i].MaterialId + "' class='selectedmat' style='text-decoration:none' href='#'><label id='selected_code" + data[i].MaterialId + "' class='selected_code' style='font-size:18px;width:6%;'> " + data[i].MaterialCode + "</label>&nbsp;&nbsp;<img id='selected_src" + data[i].MaterialId + "' alt='#' height='50' width='100' src='" + newpath + "' style='vertical-align: middle;' /> </a>&nbsp;&nbsp;");
+                            //    }
+
+                            //}
+                        }
+                    });
+
+
+                }
+                else if ($(this).val() == 5 || $(this).val() == 6) {
+
+                    $("#sub_material").empty();
+                    $("#submaterial").hide();
+                    $("#mat_weight").show();
+                    $("#weight").val("");
+                    $("#piece").val("");
+                    $("#mat_piece").hide();
+                    $.ajax({
+                        url: "../../api/getallmaterialforstockapi/Get/",
+                        data: { "TypeId": $(this).val(), "sp": "abcd" },
+                        type: "GET",
+                        dataType: 'json',
+                        success: function (data) {
+
+
+
+                            $("#selectmaterial").show();
+                            //$("#select_material").append("<option> <a href='#'><img alt='#' src='../MaterialImage/Jellyfis635371276635438443.jpg' /></a></option>");
+                            var htmlstr = "<ul class='grid'>";
+                            for (var i in data) {
+                                var path = data[i].MaterialImage;
+                                var newpath = path.substring(1);
+
+
+                                htmlstr += "<li id='selected_mat" + data[i].MaterialId + "' class='selectedmat'  style='text-decoration:none'><label id='selected_code" + data[i].MaterialId + "' class='selected_code' style='font-size:18px;width:31%;margin-left: -8%;'> " + data[i].MaterialCode + "</label>&nbsp;&nbsp;<img id='selected_src" + data[i].MaterialId + "' alt='#' height='50' width='100' src='" + newpath + "' style='vertical-align: middle;' /> </li>";
+
+
+                                //else if (i % 5 == 0) {
+                                //    $("#select_material").append("<br><br><a id='selected_mat" + data[i].MaterialId + "' class='selectedmat' href='#' style='text-decoration:none'><label id='selected_code" + data[i].MaterialId + "' class='selected_code' style='font-size:18px;width:6%;'> " + data[i].MaterialCode + "</label>&nbsp;&nbsp;<img id='selected_src" + data[i].MaterialId + "' alt='#' height='50' width='100' src='" + newpath + "' style='vertical-align: middle;' /> </a>&nbsp;&nbsp;");
+                                //}
+                                //else {
+                                //    $("#select_material").append("<a id='selected_mat" + data[i].MaterialId + "' class='selectedmat' style='text-decoration:none' href='#'><label id='selected_code" + data[i].MaterialId + "' class='selected_code' style='font-size:18px;width:6%;'> " + data[i].MaterialCode + "</label>&nbsp;&nbsp;<img id='selected_src" + data[i].MaterialId + "' alt='#' height='50' width='100' src='" + newpath + "' style='vertical-align: middle;' /> </a>&nbsp;&nbsp;");
+                                //}
+
+                            }
+                            htmlstr += "</ul>";
+                            $("#select_material").append(htmlstr);
+                            //for (var i in data) {
+                            //    var path = data[i].MaterialImage;
+                            //    var newpath = path.substring(1);
+
+                            //    if (i == 0) {
+                            //        $("#select_material").append("<a id='selected_mat" + data[i].MaterialId + "' class='selectedmat' href='#' style='text-decoration:none'><label id='selected_code" + data[i].MaterialId + "' class='selected_code' style='font-size:18px;width:6%;'> " + data[i].MaterialCode + "</label>&nbsp;&nbsp;<img id='selected_src" + data[i].MaterialId + "' alt='#' height='50' width='100' src='" + newpath + "' style='vertical-align: middle;' /> </a>&nbsp;&nbsp;");
+                            //    }
+
+                            //    else if (i % 5 == 0) {
+                            //        $("#select_material").append("<br><br><a id='selected_mat" + data[i].MaterialId + "' class='selectedmat' href='#' style='text-decoration:none'><label id='selected_code" + data[i].MaterialId + "' class='selected_code' style='font-size:18px;width:6%;'> " + data[i].MaterialCode + "</label>&nbsp;&nbsp;<img id='selected_src" + data[i].MaterialId + "' alt='#' height='50' width='100' src='" + newpath + "' style='vertical-align: middle;' /> </a>&nbsp;&nbsp;");
+                            //    }
+                            //    else {
+                            //        $("#select_material").append("<a id='selected_mat" + data[i].MaterialId + "' class='selectedmat' style='text-decoration:none' href='#'><label id='selected_code" + data[i].MaterialId + "' class='selected_code' style='font-size:18px;width:6%;'> " + data[i].MaterialCode + "</label>&nbsp;&nbsp;<img id='selected_src" + data[i].MaterialId + "' alt='#' height='50' width='100' src='" + newpath + "' style='vertical-align: middle;' /> </a>&nbsp;&nbsp;");
+                            //    }
+
+
+                            //}
+                        }
+                    });
+
+                }
+                // console.log($("#sub_material").val());
+
+            });
+
+            $(document).on('change', "#sub_material", function () {
+
+                var MaterialTypeid = $("#main_material").val();
+                subMaterialId = $("#sub_material").val();
+
+                $("#select_material").show();
+                $("#select_material").empty();
+                $("#selected_material").empty();
+                if (MainMaterialId == 1 || MainMaterialId == 4) {
+                    $.ajax({
+                        url: "../../api/getallmaterialforstockapi/Get/",
+                        data: { "TypeId": MaterialTypeid, "SubMaterialId": 0, "spd": "abcd" },
+                        type: "GET",
+                        dataType: 'json',
+                        success: function (data) {
+
+                            $("#selectmaterial").show();
+                            //$("#select_material").append("<option> <a href='#'><img alt='#' src='../MaterialImage/Jellyfis635371276635438443.jpg' /></a></option>");
+
+                            var htmlstr = "<ul class='grid'>";
+                            for (var i in data) {
+                                var path = data[i].MaterialImage;
+                                var newpath = path.substring(1);
+
+
+                                htmlstr += "<li id='selected_mat" + data[i].MaterialId + "' class='selectedmat'  style='text-decoration:none'><label id='selected_code" + data[i].MaterialId + "' class='selected_code' style='font-size:18px;width:31%;margin-left: -8%;'> " + data[i].MaterialCode + "</label>&nbsp;&nbsp;<img id='selected_src" + data[i].MaterialId + "' alt='#' height='50' width='100' src='" + newpath + "' style='vertical-align: middle;' /> </li>";
+
+
+                                //else if (i % 5 == 0) {
+                                //    $("#select_material").append("<br><br><a id='selected_mat" + data[i].MaterialId + "' class='selectedmat' href='#' style='text-decoration:none'><label id='selected_code" + data[i].MaterialId + "' class='selected_code' style='font-size:18px;width:6%;'> " + data[i].MaterialCode + "</label>&nbsp;&nbsp;<img id='selected_src" + data[i].MaterialId + "' alt='#' height='50' width='100' src='" + newpath + "' style='vertical-align: middle;' /> </a>&nbsp;&nbsp;");
+                                //}
+                                //else {
+                                //    $("#select_material").append("<a id='selected_mat" + data[i].MaterialId + "' class='selectedmat' style='text-decoration:none' href='#'><label id='selected_code" + data[i].MaterialId + "' class='selected_code' style='font-size:18px;width:6%;'> " + data[i].MaterialCode + "</label>&nbsp;&nbsp;<img id='selected_src" + data[i].MaterialId + "' alt='#' height='50' width='100' src='" + newpath + "' style='vertical-align: middle;' /> </a>&nbsp;&nbsp;");
+                                //}
+
+                            }
+                            htmlstr += "</ul>";
+                            $("#select_material").append(htmlstr);
+                        }
+                    });
+                }
+                else if (MainMaterialId == 3) {
+                    $.ajax({
+                        url: "../../api/getallmaterialforstockapi/Get/",
+                        data: { "TypeId": MaterialTypeid, "SubMaterialId": subMaterialId, "spd": "abcd" },
+                        type: "GET",
+                        dataType: 'json',
+                        success: function (data) {
+                            $("#selectmaterial").show();
+                            //$("#select_material").append("<option> <a href='#'><img alt='#' src='../MaterialImage/Jellyfis635371276635438443.jpg' /></a></option>");
+                            var htmlstr = "<ul class='grid'>";
+                            for (var i in data) {
+                                var path = data[i].MaterialImage;
+                                var newpath = path.substring(1);
+
+
+                                htmlstr += "<li id='selected_mat" + data[i].MaterialId + "' class='selectedmat'  style='text-decoration:none'><label id='selected_code" + data[i].MaterialId + "' class='selected_code' style='font-size:18px;width:31%;margin-left: -8%;'> " + data[i].MaterialCode + "</label>&nbsp;&nbsp;<img id='selected_src" + data[i].MaterialId + "' alt='#' height='50' width='100' src='" + newpath + "' style='vertical-align: middle;' /> </li>";
+
+
+                                //else if (i % 5 == 0) {
+                                //    $("#select_material").append("<br><br><a id='selected_mat" + data[i].MaterialId + "' class='selectedmat' href='#' style='text-decoration:none'><label id='selected_code" + data[i].MaterialId + "' class='selected_code' style='font-size:18px;width:6%;'> " + data[i].MaterialCode + "</label>&nbsp;&nbsp;<img id='selected_src" + data[i].MaterialId + "' alt='#' height='50' width='100' src='" + newpath + "' style='vertical-align: middle;' /> </a>&nbsp;&nbsp;");
+                                //}
+                                //else {
+                                //    $("#select_material").append("<a id='selected_mat" + data[i].MaterialId + "' class='selectedmat' style='text-decoration:none' href='#'><label id='selected_code" + data[i].MaterialId + "' class='selected_code' style='font-size:18px;width:6%;'> " + data[i].MaterialCode + "</label>&nbsp;&nbsp;<img id='selected_src" + data[i].MaterialId + "' alt='#' height='50' width='100' src='" + newpath + "' style='vertical-align: middle;' /> </a>&nbsp;&nbsp;");
+                                //}
+
+                            }
+                            htmlstr += "</ul>";
+                            $("#select_material").append(htmlstr);
+                            //for (var i in data) {
+                            //    var path = data[i].MaterialImage;
+                            //    var newpath = path.substring(1);
+
+                            //    if (i == 0) {
+                            //        $("#select_material").append("<a id='selected_mat" + data[i].MaterialId + "' class='selectedmat' href='#' style='text-decoration:none'><label id='selected_code" + data[i].MaterialId + "' class='selected_code' style='font-size:18px;width:6%;'> " + data[i].MaterialCode + "</label>&nbsp;&nbsp;<img id='selected_src" + data[i].MaterialId + "' alt='#' height='50' width='100' src='" + newpath + "' style='vertical-align: middle;'/> </a>&nbsp;&nbsp;");
+                            //    }
+
+                            //    else if (i % 5 == 0) {
+                            //        $("#select_material").append("<br><br><a id='selected_mat" + data[i].MaterialId + "' class='selectedmat' href='#' style='text-decoration:none'><label id='selected_code" + data[i].MaterialId + "' class='selected_code' style='font-size:18px;width:6%;'> " + data[i].MaterialCode + "</label>&nbsp;&nbsp;<img id='selected_src" + data[i].MaterialId + "' alt='#' height='50' width='100' src='" + newpath + "' style='vertical-align: middle;'/> </a>&nbsp;&nbsp;");
+                            //    }
+                            //    else {
+                            //        $("#select_material").append("<a id='selected_mat" + data[i].MaterialId + "' class='selectedmat' style='text-decoration:none' href='#'><label id='selected_code" + data[i].MaterialId + "' class='selected_code' style='font-size:18px;width:6%;'> " + data[i].MaterialCode + "</label>&nbsp;&nbsp;<img  id='selected_src" + data[i].MaterialId + "' alt='#' height='50' width='100' src='" + newpath + "' style='vertical-align: middle;'/> </a>&nbsp;&nbsp;");
+                            //    }
+
+                            //}
+                        }
+                    });
+                }
+
+            });
+
+            $(document).on('click', ".selectedmat", function () {
+
+                var tempid = this.id;
+                SelectedMatId = tempid.substring(12);
+                matcode = $("#selected_code" + SelectedMatId).text();
+                imgsrc = $("#selected_src" + SelectedMatId).attr('src');
+                $("#select_material").hide();
+                $("#selected_material").empty();
+                $("#selected_material").append("<a href='#' style='text-decoration:none'><label style='font-size:18px;width:6%;' class='selected_code'> " + matcode + "</label>&nbsp;&nbsp;<img alt='#' height='50' width='100' src='" + imgsrc + "' style='vertical-align: middle;'/> </a>")
+
+            });
+
+            $("#addstock").on('click', function () {
+                var pieceExp = /^[0-9]+$/;
+                var weightExp = /^\d*\.?\d*$/;
+
+                if (MainMaterialId == 5 || MainMaterialId == 6) {
+                    if ($("#weight").val() != "") {
+                        if ($("#weight").val().match(weightExp)) {
+                            if (matcode != "") {
+
+                                $.ajax({
+                                    url: "../../api/addstockapi/Post/",
+                                    type: "POST",
+                                    data: { "MaterialId": parseInt(SelectedMatId), "Piece": 0, "Weight": parseFloat($("#weight").val()), "SubMaterialTypeId": null, "MaterialTypeId": parseInt(MainMaterialId), "UserId": UserId },
+                                    dataType: 'json',
+                                    success: function (data) {
+                                        if (data == 1) {
+                                            alert("Stock Added Succssfully");
+                                        }
+                                        else {
+                                            alert("Error Occured while adding your stock,Please try again");
+                                        }
+                                    }
+                                });
+
+                            }
+                            else {
+                                alert("Please Select Material Code");
+                            }
+                        }
+                        else {
+                            alert("Please Enter valid Weight");
+                        }
+                    }
+                    else {
+                        alert("Please Enter Total Weight Of Material");
+                    }
+
+
+                }
+
+                else if (MainMaterialId == 1 || MainMaterialId == 4) {
+                    if ($("#piece").val() != "") {
+                        if ($("#piece").val().match(pieceExp)) {
+                            if (matcode != "") {
+                                $.ajax({
+                                    url: "../../api/addstockapi/Post/",
+                                    type: "POST",
+                                    data: { "MaterialId": parseInt(SelectedMatId), "Piece": $("#piece").val(), "Weight": 0, "SubMaterialTypeId": parseInt(subMaterialId), "MaterialTypeId": parseInt(MainMaterialId), "UserId": UserId },
+                                    dataType: 'json',
+                                    success: function (data) {
+                                        $("#select_material").show();
+                                        $("#selected_material").empty();
+
+                                        if (data == 1) {
+                                            alert("Stock Added Succssfully");
+                                        }
+                                        else {
+                                            alert("Error Occured while adding your stock,Please try again");
+                                        }
+                                    }
+                                });
+
+
+
+                            }
+                            else {
+                                alert("Please Select Material Code");
+                            }
+                        }
+                        else {
+                            alert("Please Enter only Number of Piece");
+                        }
+                    }
+                    else {
+                        alert("Please Enter Total Peice Of Material");
+                    }
+
+                }
+                else if (MainMaterialId == 2) {
+                    subMaterialId = $("#sub_material").val();
+                    //subMaterialId = 6;
+                    if ($("#piece").val() != "") {
+                        if ($("#piece").val().match(pieceExp)) {
+                            if (matcode != "") {
+                                $.ajax({
+                                    url: "../../api/addstockapi/Post/",
+                                    type: "POST",
+                                    data: { "MaterialId": parseInt(SelectedMatId), "Piece": $("#piece").val(), "Weight": 0, "SubMaterialTypeId": parseInt(subMaterialId), "MaterialTypeId": parseInt(MainMaterialId), "UserId": UserId },
+                                    dataType: 'json',
+                                    success: function (data) {
+                                        if (data == 1) {
+                                            alert("Stock Added Succssfully");
+                                        }
+                                        else {
+                                            alert("Error Occured while adding your stock,Please try again");
+                                        }
+                                    }
+                                });
+
+
+
+                            }
+                            else {
+                                alert("Please Select Material Code");
+                            }
+                        }
+                        else {
+                            alert("Please Enter only Number of Piece");
+                        }
+                    }
+                    else {
+                        alert("Please Enter Total Peice Of Material");
+                    }
+
+                }
+                else if (MainMaterialId == 3) {
+                    if ($("#piece").val() != "") {
+
+                        if ($("#piece").val().match(pieceExp)) {
+                            if (matcode != "") {
+                                $.ajax({
+                                    url: "../../api/addstockapi/Post/",
+                                    type: "POST",
+                                    data: { "MaterialId": parseInt(SelectedMatId), "Piece": $("#piece").val(), "Weight": 0, "SubMaterialTypeId": parseInt(subMaterialId), "MaterialTypeId": parseInt(MainMaterialId), "UserId": UserId },
+                                    dataType: 'json',
+                                    success: function (data) {
+                                        if (data == 1) {
+                                            alert("Stock Added Succssfully");
+                                        }
+                                        else {
+                                            alert("Error Occured while adding your stock,Please try again");
+                                        }
+                                    }
+                                });
+                            }
+                            else {
+                                alert("Please Select Material Code");
+                            }
+                        }
+                        else {
+                            alert("Please Enter only Number of Piece");
+                        }
+                    }
+                    else {
+                        alert("Please Enter Total Peice Of Material");
+                    }
+                }
+            });
+
+            $("#searchitem").keyup(function (event) {
+                var data = $(".selected_code").text();
+                var name = this.value;
+
+                $('.selected_code').each(function (k, v) {
+                    // console.log($(this).text());
+                    if ($(this).text().match(name)) {
+
+                        $(this).parent().show();
+                    }
+                    else {
+
+                        $(this).parent().hide();
+                    }
+                });
+
+
+
+
+                //var checkval = $(".selected_code").text().match(this.value);
+                //console.log(checkval);
+
+                //for (var i in data) {
+                //    console.log(data[i]);
+
+                //    if (data[i] == " ") {
+
+                //        MatNameArray.push(name);
+                //        name = "";
+                //    }
+                //    else {
+
+                //        name += data[i];
+                //    }
+
+                //}
+                // console.log(MatNameArray);
+
+            });
+
+        });
+
+
+    </script>
+
+
+    <style>
+        select {
+            font-family: cursive;
+            font-size: 17px;
+        }
+        .dropdown {
+            width: 250px;
+            height: 35px;
+            padding: 5px;
+            background: #fff;
+            border-radius: 3px;
+            font-size: 14px;
+            color: #474747;
+            /*font-family: MyFont2;*/
+            border: #cbcbcb 1px solid;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 6px 12px;
+            margin-bottom: 0;
+            font-size: 14px;
+            font-weight: normal;
+            line-height: 1.428571429;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            cursor: pointer;
+            background-image: none;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            -webkit-user-select: none;
+        }
+
+        .btn-primary {
+            color: #ffffff;
+            background-color: #428bca;
+            border-color: #357ebd;
+        }
+
+        .selected_code {
+            display: inline-block;
+            font-size: 17px;
+            margin: 0 0 5px;
+            position: relative;
+        }
+
+        #select_material ul {
+            list-style: none;
+        }
+
+        #container .buttons {
+            margin-bottom: 20px;
+        }
+
+        #select_material .list li {
+            width: 100%;
+            border-bottom: 1px dotted #CCC;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+        }
+
+        #select_material .grid li {
+            float: left;
+            width: 15%;
+            height: 50px;
+            border-right: 1px dotted #CCC;
+            border-bottom: 1px dotted #CCC;
+            padding: 20px;
+        }
+    </style>
+
+</head>
+<body>
+
+
+    <h1 id="head">Pragati Yarn  <a href="/Home/LogOut" style="float: right">Log Out</a></h1>
+    <div id="navigation">
+        <ul id="jMenu">
+            <li><a>Customer</a>
+                <ul>
+                    <li><a href="/Home/ViewCustomers" style="text-decoration: none">View Customers</a></li>
+                    <li><a href="/Home/AddCustomer" style="text-decoration: none">Add Customer</a></li>
+                    <li><a href="/Home/CustomerPayment" style="text-decoration: none">Customer Payment</a></li>
+                    <li><a href="/Home/PaymentHistory" style="text-decoration: none">Payment History</a></li>
+
+                </ul>
+            </li>
+            <li><a>Stocks</a>
+                <ul>
+                    <li><a href="/Home/AddStock" style="text-decoration: none">Add Stocks</a></li>
+                    <li><a href="/Home/ViewStocks" style="text-decoration: none">View Stocks</a></li>
+
+                </ul>
+            </li>
+            <li><a>Materials</a>
+                <ul>
+                    <li><a href="/Home/AddNewMaterial" style="text-decoration: none">Add Material</a></li>
+                    <li><a href="/Home/ViewMaterials" style="text-decoration: none">View Materials</a></li>
+
+                </ul>
+            </li>
+            @if (int.Parse(Session["UserId"].ToString()) == 1)
+            {
+                <li><a href="/Home/AddUser" style="text-decoration: none">Add New User</a></li>
+            
+            }
+            <li><a>Sale</a>
+                <ul>
+                    <li><a href="/Home/sales" style="text-decoration: none">Sales</a></li>
+                    <li><a href="/Home/ReturnSales" style="text-decoration: none">Return Sales</a></li>
+                    <li><a href="/Home/DailyInvoice" style="text-decoration: none">Daily Invoice</a></li>
+                    <li><a href="/Home/MonthlyInvoice" style="text-decoration: none">Monthly Invoice</a></li>
+
+                </ul>
+            </li>
+            @if (int.Parse(Session["UserId"].ToString()) == 1)
+            {
+                <li><a href="/Home/ChangeRate" style="text-decoration: none">Change Rate</a></li>
+            }
+        </ul>
+    </div>
+    <div id="content" class="container_16 clearfix">
+        <div class="grid_16">
+            <h2>Add Stock</h2>
+        </div>
+        <div class="grid_5">
+            <p>
+                <label for="title">Select Material Type:</label>
+                <select id="main_material" name="MaterialId"></select><br />
+                <br />
+
+            </p>
+        </div>
+        <div class="grid_16" id="submaterial" style="display: none">
+            <p>
+                <label for="title">Select Sub Material Type:</label>
+                <select id="sub_material" name="SubMaterialId" style="width: 29%;"></select><br />
+                <br />
+
+            </p>
+        </div>
+
+        <div class="grid_16" id="selectmaterial" style="display: none">
+
+            <label for="title">
+                Select Material Code: &nbsp;&nbsp;
+                <input type="text" id="searchitem" name="Search" placeholder="Enter Keyword" style="width: 20%;" /></label>
+            <div id="select_material" name="AllMaterialId"></div>
+            <div id="selected_material" name="SelectedMaterialId"></div>
+            <br />
+            <br />
+
+
+        </div>
+        <div class="grid_16" id="mat_weight" style="display: none">
+            <p>
+                <label for="title">Total Material Weight:</label>
+                <input type="text" id="weight" name="Price" placeholder="Enter weight in kilogram" style="width: 29%;" /><br />
+                <br />
+
+            </p>
+        </div>
+        <div class="grid_16" id="mat_piece" style="display: none">
+            <p>
+                <label for="title">Total Material Piece:</label>
+                <input type="text" id="piece" name="Enter No of Piece" style="width: 29%;" /><br />
+                <br />
+
+            </p>
+        </div>
+
+        <div class="grid_16">
+            <p>
+                <button type="button" class="btn btn-primary" id="addstock" value="Add Stock">Add Stock</button>
+
+            </p>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    @*<div style="margin-top: 10%; margin-left: 30%">
+        <span>Select Material Type:
+            <select id="main_material" class="dropdown" name="MaterialId"></select></span><br />
+        <br />
+        <br />
+
+        <span id="submaterial" style="display: none">Select Sub Material Type:
+            <select id="sub_material" name="SubMaterialId" class="dropdown"></select></span><br />
+        <br />
+        <br />
+        <div id="selectmaterial" style="display: none">
+            Select Material Code:
+        </div>
+        <div id="select_material" name="AllMaterialId" style="margin-left: 16%; margin-top: -3.5%;"></div>
+        <br />
+        <br />
+
+        <span id="mat_weight" style="display: none">Total Material Weight:
+            <input type="text" id="weight" name="Price" placeholder="Enter weight in kilogram" /></span><br />
+        <br />
+
+        <span id="mat_piece" style="display: none">Total Material Piece:
+            <input type="text" id="piece" name="Price" /></span><br />
+
+        <button type="button" value="Add Stock">Add Stock</button>
+    </div>*@
+</body>
+</html>

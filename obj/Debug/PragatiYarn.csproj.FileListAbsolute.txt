@@ -1,0 +1,108 @@
+D:\New Pragati\PragatiYarn\PragatiYarn\bin\PragatiYarn.dll
+D:\New Pragati\PragatiYarn\PragatiYarn\bin\PragatiYarn.pdb
+D:\New Pragati\PragatiYarn\PragatiYarn\bin\EntityFramework.dll
+D:\New Pragati\PragatiYarn\PragatiYarn\bin\Microsoft.Practices.ServiceLocation.dll
+D:\New Pragati\PragatiYarn\PragatiYarn\bin\Microsoft.Practices.Unity.Configuration.dll
+D:\New Pragati\PragatiYarn\PragatiYarn\bin\Microsoft.Practices.Unity.dll
+D:\New Pragati\PragatiYarn\PragatiYarn\bin\Microsoft.Web.Infrastructure.dll
+D:\New Pragati\PragatiYarn\PragatiYarn\bin\Newtonsoft.Json.dll
+D:\New Pragati\PragatiYarn\PragatiYarn\bin\System.Net.Http.dll
+D:\New Pragati\PragatiYarn\PragatiYarn\bin\System.Net.Http.WebRequest.dll
+D:\New Pragati\PragatiYarn\PragatiYarn\bin\System.Web.Helpers.dll
+D:\New Pragati\PragatiYarn\PragatiYarn\bin\System.Web.Mvc.dll
+D:\New Pragati\PragatiYarn\PragatiYarn\bin\System.Web.Razor.dll
+D:\New Pragati\PragatiYarn\PragatiYarn\bin\System.Web.WebPages.Deployment.dll
+D:\New Pragati\PragatiYarn\PragatiYarn\bin\System.Web.WebPages.dll
+D:\New Pragati\PragatiYarn\PragatiYarn\bin\System.Web.WebPages.Razor.dll
+D:\New Pragati\PragatiYarn\PragatiYarn\bin\Unity.Mvc3.dll
+D:\New Pragati\PragatiYarn\PragatiYarn\bin\EntityFramework.xml
+D:\New Pragati\PragatiYarn\PragatiYarn\bin\Microsoft.Practices.ServiceLocation.pdb
+D:\New Pragati\PragatiYarn\PragatiYarn\bin\Microsoft.Practices.ServiceLocation.xml
+D:\New Pragati\PragatiYarn\PragatiYarn\bin\Microsoft.Practices.Unity.xml
+D:\New Pragati\PragatiYarn\PragatiYarn\bin\Microsoft.Practices.Unity.Configuration.xml
+D:\New Pragati\PragatiYarn\PragatiYarn\bin\Newtonsoft.Json.xml
+D:\New Pragati\PragatiYarn\PragatiYarn\bin\System.Net.Http.xml
+D:\New Pragati\PragatiYarn\PragatiYarn\bin\System.Net.Http.WebRequest.xml
+D:\New Pragati\PragatiYarn\PragatiYarn\bin\System.Web.Helpers.xml
+D:\New Pragati\PragatiYarn\PragatiYarn\bin\System.Web.Mvc.xml
+D:\New Pragati\PragatiYarn\PragatiYarn\bin\System.Web.Razor.xml
+D:\New Pragati\PragatiYarn\PragatiYarn\bin\System.Web.WebPages.xml
+D:\New Pragati\PragatiYarn\PragatiYarn\bin\System.Web.WebPages.Deployment.xml
+D:\New Pragati\PragatiYarn\PragatiYarn\bin\System.Web.WebPages.Razor.xml
+D:\New Pragati\PragatiYarn\PragatiYarn\obj\Debug\PragatiYarn.dll
+D:\New Pragati\PragatiYarn\PragatiYarn\obj\Debug\PragatiYarn.pdb
+D:\New Pragati\PragatiYarn\PragatiYarn\obj\Debug\PragatiYarn.csprojResolveAssemblyReference.cache
+E:\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\PragatiYarn.dll
+E:\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\PragatiYarn.pdb
+E:\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\EntityFramework.dll
+E:\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\Microsoft.Practices.ServiceLocation.dll
+E:\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\Microsoft.Practices.Unity.Configuration.dll
+E:\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\Microsoft.Practices.Unity.dll
+E:\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\Microsoft.Web.Infrastructure.dll
+E:\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\Newtonsoft.Json.dll
+E:\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\System.Net.Http.dll
+E:\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\System.Net.Http.Formatting.dll
+E:\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\System.Net.Http.WebRequest.dll
+E:\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\System.Web.Helpers.dll
+E:\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\System.Web.Http.dll
+E:\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\System.Web.Http.WebHost.dll
+E:\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\System.Web.Mvc.dll
+E:\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\System.Web.Razor.dll
+E:\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\System.Web.WebPages.Deployment.dll
+E:\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\System.Web.WebPages.dll
+E:\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\System.Web.WebPages.Razor.dll
+E:\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\Unity.Mvc3.dll
+E:\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\EntityFramework.xml
+E:\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\Microsoft.Practices.ServiceLocation.pdb
+E:\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\Microsoft.Practices.ServiceLocation.xml
+E:\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\Microsoft.Practices.Unity.xml
+E:\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\Microsoft.Practices.Unity.Configuration.xml
+E:\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\Newtonsoft.Json.xml
+E:\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\System.Net.Http.xml
+E:\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\System.Net.Http.Formatting.xml
+E:\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\System.Net.Http.WebRequest.xml
+E:\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\System.Web.Helpers.xml
+E:\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\System.Web.Http.xml
+E:\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\System.Web.Http.WebHost.xml
+E:\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\System.Web.Mvc.xml
+E:\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\System.Web.Razor.xml
+E:\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\System.Web.WebPages.xml
+E:\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\System.Web.WebPages.Deployment.xml
+E:\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\System.Web.WebPages.Razor.xml
+E:\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\obj\Debug\PragatiYarn.csprojResolveAssemblyReference.cache
+E:\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\obj\Debug\PragatiYarn.dll
+E:\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\obj\Debug\PragatiYarn.pdb
+E:\DotNetProjects\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\PragatiYarn.dll
+E:\DotNetProjects\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\PragatiYarn.pdb
+E:\DotNetProjects\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\EntityFramework.dll
+E:\DotNetProjects\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\Microsoft.Practices.ServiceLocation.dll
+E:\DotNetProjects\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\Microsoft.Practices.Unity.Configuration.dll
+E:\DotNetProjects\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\Microsoft.Practices.Unity.dll
+E:\DotNetProjects\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\Microsoft.Web.Infrastructure.dll
+E:\DotNetProjects\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\Newtonsoft.Json.dll
+E:\DotNetProjects\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\System.Net.Http.dll
+E:\DotNetProjects\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\System.Net.Http.WebRequest.dll
+E:\DotNetProjects\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\System.Web.Helpers.dll
+E:\DotNetProjects\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\System.Web.Mvc.dll
+E:\DotNetProjects\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\System.Web.Razor.dll
+E:\DotNetProjects\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\System.Web.WebPages.Deployment.dll
+E:\DotNetProjects\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\System.Web.WebPages.dll
+E:\DotNetProjects\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\System.Web.WebPages.Razor.dll
+E:\DotNetProjects\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\Unity.Mvc3.dll
+E:\DotNetProjects\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\EntityFramework.xml
+E:\DotNetProjects\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\Microsoft.Practices.ServiceLocation.pdb
+E:\DotNetProjects\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\Microsoft.Practices.ServiceLocation.xml
+E:\DotNetProjects\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\Microsoft.Practices.Unity.xml
+E:\DotNetProjects\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\Microsoft.Practices.Unity.Configuration.xml
+E:\DotNetProjects\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\Newtonsoft.Json.xml
+E:\DotNetProjects\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\System.Net.Http.xml
+E:\DotNetProjects\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\System.Net.Http.WebRequest.xml
+E:\DotNetProjects\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\System.Web.Helpers.xml
+E:\DotNetProjects\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\System.Web.Mvc.xml
+E:\DotNetProjects\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\System.Web.Razor.xml
+E:\DotNetProjects\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\System.Web.WebPages.xml
+E:\DotNetProjects\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\System.Web.WebPages.Deployment.xml
+E:\DotNetProjects\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\bin\System.Web.WebPages.Razor.xml
+E:\DotNetProjects\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\obj\Debug\PragatiYarn.csprojResolveAssemblyReference.cache
+E:\DotNetProjects\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\obj\Debug\PragatiYarn.dll
+E:\DotNetProjects\New Pragati\PragatiYarn 23-5\PragatiYarn\PragatiYarn\obj\Debug\PragatiYarn.pdb

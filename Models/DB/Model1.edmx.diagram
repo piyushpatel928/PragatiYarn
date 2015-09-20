@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="84be5f4a100349bd8188004940a4cb9a" Name="Diagram1">
+        <EntityTypeShape EntityType="PragatiDbModel.AllMaterial" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PragatiDbModel.Customer" Width="1.5" PointX="3" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PragatiDbModel.CustomerPaidHistory" Width="1.5" PointX="5.25" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="PragatiDbModel.CustomerPayableAmount" Width="1.5" PointX="5.25" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PragatiDbModel.Invoice" Width="1.5" PointX="8.25" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="PragatiDbModel.MaterialType" Width="1.5" PointX="1.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PragatiDbModel.MonthlyInvoice" Width="1.5" PointX="5.25" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="PragatiDbModel.Stock" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PragatiDbModel.Sub_Accralic" Width="1.5" PointX="3.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PragatiDbModel.Sub_FizingPaper" Width="1.5" PointX="3.75" PointY="18.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PragatiDbModel.Sub_Kasab" Width="1.5" PointX="1.5" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="PragatiDbModel.SubMaterialType" Width="1.5" PointX="0.75" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PragatiDbModel.User" Width="1.5" PointX="0.75" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PragatiDbModel.Sale" Width="1.5" PointX="10.5" PointY="7.625" IsExpanded="true" />
+        <AssociationConnector Association="PragatiDbModel.FK_AllMaterials_MaterialType" ManuallyRouted="false" />
+        <AssociationConnector Association="PragatiDbModel.FK_AllMaterials_SubKasab" ManuallyRouted="false" />
+        <AssociationConnector Association="PragatiDbModel.FK_Sale_Material" ManuallyRouted="false" />
+        <AssociationConnector Association="PragatiDbModel.FK_Stock_AllMaterials" ManuallyRouted="false" />
+        <AssociationConnector Association="PragatiDbModel.FK_Customer_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="PragatiDbModel.FK_CustomerPaidHistory_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="PragatiDbModel.FK_CustomerPayableAmount_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="PragatiDbModel.FK_Invoice_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="PragatiDbModel.FK_MonthlyInvoice_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="PragatiDbModel.FK_Sale_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="PragatiDbModel.FK_CustomerPaidHistory_User" ManuallyRouted="false" />
+        <AssociationConnector Association="PragatiDbModel.FK_CustomerPayableAmount_User" ManuallyRouted="false" />
+        <AssociationConnector Association="PragatiDbModel.FK_Invoice_User" ManuallyRouted="false" />
+        <AssociationConnector Association="PragatiDbModel.FK_Sale_Invoice" ManuallyRouted="false" />
+        <AssociationConnector Association="PragatiDbModel.FK_Stock_MaterialType" ManuallyRouted="false" />
+        <AssociationConnector Association="PragatiDbModel.FK_Sub_Accralic_MaterialType" ManuallyRouted="false" />
+        <AssociationConnector Association="PragatiDbModel.FK_Sub_FizingPaper_MaterialType" ManuallyRouted="false" />
+        <AssociationConnector Association="PragatiDbModel.FK_Sub_Kasab_MaterialType" ManuallyRouted="false" />
+        <AssociationConnector Association="PragatiDbModel.FK_SubMaterialType_MaterialType" ManuallyRouted="false" />
+        <AssociationConnector Association="PragatiDbModel.FK_MonthlyInvoice_User" ManuallyRouted="false" />
+        <AssociationConnector Association="PragatiDbModel.FK_Sale_Stock" ManuallyRouted="false" />
+        <AssociationConnector Association="PragatiDbModel.FK_Stock_SubKasab" ManuallyRouted="false" />
+        <AssociationConnector Association="PragatiDbModel.FK_Stock_SubMaterialType" ManuallyRouted="false" />
+        <AssociationConnector Association="PragatiDbModel.FK_Stock_User" ManuallyRouted="false" />
+        <AssociationConnector Association="PragatiDbModel.FK_Sale_User" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

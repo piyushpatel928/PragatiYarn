@@ -1,0 +1,21 @@
+@charset "utf-8";
+/* CSS Document */
+body 		{ margin:0; padding:0; }
+section, article, header, footer, nav, figure, figcaption aside, video, hgroup, p, address { display: block; padding:0px; margin:0px; }
+#wrapper	{ width:100%; background:url(../images/top-bg.jpg) repeat-x; padding-bottom:4px; float:left; }
+.main		{ width:989px; margin:0 auto; padding:0px; }
+.logo		{ float:left; width:155px; border-right:solid 1px #656565; box-shadow:1px 0px 0px #333; padding:15px 33px 15px 0; margin:4px 0;  }
+.type		{ float:left; width:375px; color:#e5e5e5; font:normal normal 12px Arial; padding:34px 0; margin:4px 0; border-right:solid 1px #656565; box-shadow:1px 0px 0px #333; }
+.type span	{ padding:0 5px;  float:left; }
+.type a		{ font:normal normal 11px Arial; color:#e5e5e5; text-decoration:underline; padding:0 0px; }
+.type a:hover	{ text-decoration:none; }
+.addthis	{ float:left; width:165px; padding:33px 13px 25px; margin:4px 0; border-right:solid 1px #656565; box-shadow:1px 0px 0px #333; }
+.price		{ float:left; width:227px; font:normal bold 18px Arial; color:#fff; padding:32px 0; }
+.price span { padding:0px 12px; float:left; }
+.price img	{ float:right; margin:0; padding:0; }
+.template	{ width:100%; float:left; }
+.template img	{ width:100%; }
+.full_site_temp_2 {
+color: #333;
+font-size: 12px;
+}

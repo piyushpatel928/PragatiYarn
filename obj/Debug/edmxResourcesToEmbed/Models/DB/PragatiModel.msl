@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PragatiDbModelStoreContainer" CdmEntityContainer="PragatiEntities">
+    <EntitySetMapping Name="AllMaterials">
+      <EntityTypeMapping TypeName="PragatiDbModel.AllMaterial">
+        <MappingFragment StoreEntitySet="AllMaterials">
+          <ScalarProperty Name="MaterialId" ColumnName="MaterialId" />
+          <ScalarProperty Name="MaterialCode" ColumnName="MaterialCode" />
+          <ScalarProperty Name="MaterialImagePath" ColumnName="MaterialImagePath" />
+          <ScalarProperty Name="MaterialTypeId" ColumnName="MaterialTypeId" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Sub_KasabId" ColumnName="Sub_KasabId" />
+          <ScalarProperty Name="Datetime" ColumnName="Datetime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="PragatiDbModel.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="CustomerSurname" ColumnName="CustomerSurname" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="CustomerFirmname" ColumnName="CustomerFirmname" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+          <ScalarProperty Name="CustomerImageName" ColumnName="CustomerImageName" />
+          <ScalarProperty Name="CustomerImagePath" ColumnName="CustomerImagePath" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustomerPaidHistories">
+      <EntityTypeMapping TypeName="PragatiDbModel.CustomerPaidHistory">
+        <MappingFragment StoreEntitySet="CustomerPaidHistory">
+          <ScalarProperty Name="PaidId" ColumnName="PaidId" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustomerPayableAmounts">
+      <EntityTypeMapping TypeName="PragatiDbModel.CustomerPayableAmount">
+        <MappingFragment StoreEntitySet="CustomerPayableAmount">
+          <ScalarProperty Name="CustomerPaymentId" ColumnName="CustomerPaymentId" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Invoices">
+      <EntityTypeMapping TypeName="PragatiDbModel.Invoice">
+        <MappingFragment StoreEntitySet="Invoice">
+          <ScalarProperty Name="InvoiceId" ColumnName="InvoiceId" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MaterialTypes">
+      <EntityTypeMapping TypeName="PragatiDbModel.MaterialType">
+        <MappingFragment StoreEntitySet="MaterialType">
+          <ScalarProperty Name="MaterialTypeId" ColumnName="MaterialTypeId" />
+          <ScalarProperty Name="MaterialName" ColumnName="MaterialName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MonthlyInvoices">
+      <EntityTypeMapping TypeName="PragatiDbModel.MonthlyInvoice">
+        <MappingFragment StoreEntitySet="MonthlyInvoice">
+          <ScalarProperty Name="MonthlyInvoiceId" ColumnName="MonthlyInvoiceId" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="FromDateTime" ColumnName="FromDateTime" />
+          <ScalarProperty Name="ToDateTime" ColumnName="ToDateTime" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Stocks">
+      <EntityTypeMapping TypeName="PragatiDbModel.Stock">
+        <MappingFragment StoreEntitySet="Stock">
+          <ScalarProperty Name="StockId" ColumnName="StockId" />
+          <ScalarProperty Name="MaterialId" ColumnName="MaterialId" />
+          <ScalarProperty Name="Nos_Of_Piece" ColumnName="Nos_Of_Piece" />
+          <ScalarProperty Name="Tot_Weight_in_Gram_" ColumnName="Tot_Weight(in_Gram)" />
+          <ScalarProperty Name="LastAddedStock" ColumnName="LastAddedStock" />
+          <ScalarProperty Name="UpdatedDatetime" ColumnName="UpdatedDatetime" />
+          <ScalarProperty Name="SubMaterialTypeId" ColumnName="SubMaterialTypeId" />
+          <ScalarProperty Name="MaterialTypeId" ColumnName="MaterialTypeId" />
+          <ScalarProperty Name="Sub_KasabId" ColumnName="Sub_KasabId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sub_Accralic">
+      <EntityTypeMapping TypeName="PragatiDbModel.Sub_Accralic">
+        <MappingFragment StoreEntitySet="Sub_Accralic">
+          <ScalarProperty Name="Sub_AccralicId" ColumnName="Sub_AccralicId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="MaterialTypeId" ColumnName="MaterialTypeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sub_FizingPaper">
+      <EntityTypeMapping TypeName="PragatiDbModel.Sub_FizingPaper">
+        <MappingFragment StoreEntitySet="Sub_FizingPaper">
+          <ScalarProperty Name="Sub_FizingPaperId" ColumnName="Sub_FizingPaperId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="MaterialTypeId" ColumnName="MaterialTypeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sub_Kasab">
+      <EntityTypeMapping TypeName="PragatiDbModel.Sub_Kasab">
+        <MappingFragment StoreEntitySet="Sub_Kasab">
+          <ScalarProperty Name="Sub_KasabId" ColumnName="Sub_KasabId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Length" ColumnName="Length" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="MaterialTypeId" ColumnName="MaterialTypeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubMaterialTypes">
+      <EntityTypeMapping TypeName="PragatiDbModel.SubMaterialType">
+        <MappingFragment StoreEntitySet="SubMaterialType">
+          <ScalarProperty Name="SubMaterialTypeId" ColumnName="SubMaterialTypeId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Length" ColumnName="Length" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="MaterialTypeId" ColumnName="MaterialTypeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="PragatiDbModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Fullname" ColumnName="Fullname" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sales">
+      <EntityTypeMapping TypeName="PragatiDbModel.Sale">
+        <MappingFragment StoreEntitySet="Sale">
+          <ScalarProperty Name="SaleId" ColumnName="SaleId" />
+          <ScalarProperty Name="Nos_Of_Piece" ColumnName="Nos_Of_Piece" />
+          <ScalarProperty Name="Tot_Weight_in_Gram_" ColumnName="Tot_Weight(in_Gram)" />
+          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="MaterialId" ColumnName="MaterialId" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="StockId" ColumnName="StockId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="InvoiceId" ColumnName="InvoiceId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,570 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PragatiDbModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="PragatiDbModelStoreContainer">
+    <EntitySet Name="AllMaterials" EntityType="PragatiDbModel.Store.AllMaterials" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Customer" EntityType="PragatiDbModel.Store.Customer" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CustomerPaidHistory" EntityType="PragatiDbModel.Store.CustomerPaidHistory" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CustomerPayableAmount" EntityType="PragatiDbModel.Store.CustomerPayableAmount" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Invoice" EntityType="PragatiDbModel.Store.Invoice" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MaterialType" EntityType="PragatiDbModel.Store.MaterialType" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MonthlyInvoice" EntityType="PragatiDbModel.Store.MonthlyInvoice" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Stock" EntityType="PragatiDbModel.Store.Stock" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Sub_Accralic" EntityType="PragatiDbModel.Store.Sub_Accralic" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Sub_FizingPaper" EntityType="PragatiDbModel.Store.Sub_FizingPaper" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Sub_Kasab" EntityType="PragatiDbModel.Store.Sub_Kasab" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SubMaterialType" EntityType="PragatiDbModel.Store.SubMaterialType" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="User" EntityType="PragatiDbModel.Store.User" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Sale" EntityType="PragatiDbModel.Store.Sale" store:Type="Tables" Schema="PragatiDbUser" />
+    <AssociationSet Name="FK_AllMaterials_MaterialType" Association="PragatiDbModel.Store.FK_AllMaterials_MaterialType">
+      <End Role="MaterialType" EntitySet="MaterialType" />
+      <End Role="AllMaterials" EntitySet="AllMaterials" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AllMaterials_SubKasab" Association="PragatiDbModel.Store.FK_AllMaterials_SubKasab">
+      <End Role="Sub_Kasab" EntitySet="Sub_Kasab" />
+      <End Role="AllMaterials" EntitySet="AllMaterials" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Customer_UserId" Association="PragatiDbModel.Store.FK_Customer_UserId">
+      <End Role="User" EntitySet="User" />
+      <End Role="Customer" EntitySet="Customer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CustomerPaidHistory_Customer" Association="PragatiDbModel.Store.FK_CustomerPaidHistory_Customer">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="CustomerPaidHistory" EntitySet="CustomerPaidHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CustomerPaidHistory_User" Association="PragatiDbModel.Store.FK_CustomerPaidHistory_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="CustomerPaidHistory" EntitySet="CustomerPaidHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CustomerPayableAmount_Customer" Association="PragatiDbModel.Store.FK_CustomerPayableAmount_Customer">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="CustomerPayableAmount" EntitySet="CustomerPayableAmount" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CustomerPayableAmount_User" Association="PragatiDbModel.Store.FK_CustomerPayableAmount_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="CustomerPayableAmount" EntitySet="CustomerPayableAmount" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Invoice_Customer" Association="PragatiDbModel.Store.FK_Invoice_Customer">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="Invoice" EntitySet="Invoice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Invoice_User" Association="PragatiDbModel.Store.FK_Invoice_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Invoice" EntitySet="Invoice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MonthlyInvoice_Customer" Association="PragatiDbModel.Store.FK_MonthlyInvoice_Customer">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="MonthlyInvoice" EntitySet="MonthlyInvoice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MonthlyInvoice_User" Association="PragatiDbModel.Store.FK_MonthlyInvoice_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="MonthlyInvoice" EntitySet="MonthlyInvoice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sale_Customer" Association="PragatiDbModel.Store.FK_Sale_Customer">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="Sale" EntitySet="Sale" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sale_Invoice" Association="PragatiDbModel.Store.FK_Sale_Invoice">
+      <End Role="Invoice" EntitySet="Invoice" />
+      <End Role="Sale" EntitySet="Sale" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sale_Material" Association="PragatiDbModel.Store.FK_Sale_Material">
+      <End Role="AllMaterials" EntitySet="AllMaterials" />
+      <End Role="Sale" EntitySet="Sale" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sale_Stock" Association="PragatiDbModel.Store.FK_Sale_Stock">
+      <End Role="Stock" EntitySet="Stock" />
+      <End Role="Sale" EntitySet="Sale" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sale_User" Association="PragatiDbModel.Store.FK_Sale_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Sale" EntitySet="Sale" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Stock_AllMaterials" Association="PragatiDbModel.Store.FK_Stock_AllMaterials">
+      <End Role="AllMaterials" EntitySet="AllMaterials" />
+      <End Role="Stock" EntitySet="Stock" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Stock_MaterialType" Association="PragatiDbModel.Store.FK_Stock_MaterialType">
+      <End Role="MaterialType" EntitySet="MaterialType" />
+      <End Role="Stock" EntitySet="Stock" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Stock_SubKasab" Association="PragatiDbModel.Store.FK_Stock_SubKasab">
+      <End Role="Sub_Kasab" EntitySet="Sub_Kasab" />
+      <End Role="Stock" EntitySet="Stock" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Stock_SubMaterialType" Association="PragatiDbModel.Store.FK_Stock_SubMaterialType">
+      <End Role="SubMaterialType" EntitySet="SubMaterialType" />
+      <End Role="Stock" EntitySet="Stock" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Stock_User" Association="PragatiDbModel.Store.FK_Stock_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Stock" EntitySet="Stock" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sub_Accralic_MaterialType" Association="PragatiDbModel.Store.FK_Sub_Accralic_MaterialType">
+      <End Role="MaterialType" EntitySet="MaterialType" />
+      <End Role="Sub_Accralic" EntitySet="Sub_Accralic" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sub_FizingPaper_MaterialType" Association="PragatiDbModel.Store.FK_Sub_FizingPaper_MaterialType">
+      <End Role="MaterialType" EntitySet="MaterialType" />
+      <End Role="Sub_FizingPaper" EntitySet="Sub_FizingPaper" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sub_Kasab_MaterialType" Association="PragatiDbModel.Store.FK_Sub_Kasab_MaterialType">
+      <End Role="MaterialType" EntitySet="MaterialType" />
+      <End Role="Sub_Kasab" EntitySet="Sub_Kasab" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SubMaterialType_MaterialType" Association="PragatiDbModel.Store.FK_SubMaterialType_MaterialType">
+      <End Role="MaterialType" EntitySet="MaterialType" />
+      <End Role="SubMaterialType" EntitySet="SubMaterialType" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="AllMaterials">
+    <Key>
+      <PropertyRef Name="MaterialId" />
+    </Key>
+    <Property Name="MaterialId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="MaterialCode" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="MaterialImagePath" Type="nvarchar(max)" />
+    <Property Name="MaterialTypeId" Type="int" />
+    <Property Name="Price" Type="float" />
+    <Property Name="Sub_KasabId" Type="int" />
+    <Property Name="Datetime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="CustomerId" />
+    </Key>
+    <Property Name="CustomerId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerSurname" Type="nvarchar(max)" />
+    <Property Name="CustomerName" Type="nvarchar(max)" />
+    <Property Name="CustomerFirmname" Type="nvarchar(max)" />
+    <Property Name="Address" Type="nvarchar(max)" />
+    <Property Name="MobileNo" Type="numeric" Precision="10" />
+    <Property Name="CustomerImageName" Type="nvarchar(max)" />
+    <Property Name="CustomerImagePath" Type="nvarchar(max)" />
+    <Property Name="UserId" Type="int" />
+  </EntityType>
+  <EntityType Name="CustomerPaidHistory">
+    <Key>
+      <PropertyRef Name="PaidId" />
+    </Key>
+    <Property Name="PaidId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerId" Type="int" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="Amount" Type="real" />
+    <Property Name="DateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="CustomerPayableAmount">
+    <Key>
+      <PropertyRef Name="CustomerPaymentId" />
+    </Key>
+    <Property Name="CustomerPaymentId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerId" Type="int" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="Amount" Type="real" />
+  </EntityType>
+  <EntityType Name="Invoice">
+    <Key>
+      <PropertyRef Name="InvoiceId" />
+    </Key>
+    <Property Name="InvoiceId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerId" Type="int" />
+    <Property Name="TotalAmount" Type="real" />
+    <Property Name="DateTime" Type="nvarchar" MaxLength="50" />
+    <Property Name="UserId" Type="int" />
+  </EntityType>
+  <EntityType Name="MaterialType">
+    <Key>
+      <PropertyRef Name="MaterialTypeId" />
+    </Key>
+    <Property Name="MaterialTypeId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="MaterialName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="MonthlyInvoice">
+    <Key>
+      <PropertyRef Name="MonthlyInvoiceId" />
+    </Key>
+    <Property Name="MonthlyInvoiceId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerId" Type="int" />
+    <Property Name="TotalAmount" Type="real" />
+    <Property Name="FromDateTime" Type="nvarchar" MaxLength="50" />
+    <Property Name="ToDateTime" Type="nvarchar" MaxLength="50" />
+    <Property Name="UserId" Type="int" />
+  </EntityType>
+  <EntityType Name="Stock">
+    <Key>
+      <PropertyRef Name="StockId" />
+    </Key>
+    <Property Name="StockId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="MaterialId" Type="int" />
+    <Property Name="Nos_Of_Piece" Type="int" />
+    <Property Name="Tot_Weight(in_Gram)" Type="real" />
+    <Property Name="LastAddedStock" Type="nvarchar(max)" />
+    <Property Name="UpdatedDatetime" Type="datetime" />
+    <Property Name="SubMaterialTypeId" Type="int" />
+    <Property Name="MaterialTypeId" Type="int" />
+    <Property Name="Sub_KasabId" Type="int" />
+    <Property Name="UserId" Type="int" />
+  </EntityType>
+  <EntityType Name="Sub_Accralic">
+    <Key>
+      <PropertyRef Name="Sub_AccralicId" />
+    </Key>
+    <Property Name="Sub_AccralicId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar(max)" />
+    <Property Name="Price" Type="real" />
+    <Property Name="MaterialTypeId" Type="int" />
+  </EntityType>
+  <EntityType Name="Sub_FizingPaper">
+    <Key>
+      <PropertyRef Name="Sub_FizingPaperId" />
+    </Key>
+    <Property Name="Sub_FizingPaperId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar(max)" />
+    <Property Name="Price" Type="real" />
+    <Property Name="MaterialTypeId" Type="int" />
+  </EntityType>
+  <EntityType Name="Sub_Kasab">
+    <Key>
+      <PropertyRef Name="Sub_KasabId" />
+    </Key>
+    <Property Name="Sub_KasabId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar(max)" />
+    <Property Name="Length" Type="nvarchar(max)" />
+    <Property Name="Price" Type="real" />
+    <Property Name="MaterialTypeId" Type="int" />
+  </EntityType>
+  <EntityType Name="SubMaterialType">
+    <Key>
+      <PropertyRef Name="SubMaterialTypeId" />
+    </Key>
+    <Property Name="SubMaterialTypeId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Length" Type="nvarchar" MaxLength="50" />
+    <Property Name="Price" Type="real" />
+    <Property Name="MaterialTypeId" Type="int" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Fullname" Type="nvarchar" MaxLength="50" />
+    <Property Name="Username" Type="nvarchar" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Sale">
+    <Key>
+      <PropertyRef Name="SaleId" />
+    </Key>
+    <Property Name="SaleId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Nos_Of_Piece" Type="int" />
+    <Property Name="Tot_Weight(in_Gram)" Type="real" />
+    <Property Name="CreatedDateTime" Type="nvarchar" MaxLength="50" />
+    <Property Name="CustomerId" Type="int" />
+    <Property Name="MaterialId" Type="int" />
+    <Property Name="TotalAmount" Type="real" />
+    <Property Name="StockId" Type="int" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="InvoiceId" Type="int" />
+    <Property Name="ReturnPiece" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <Association Name="FK_AllMaterials_MaterialType">
+    <End Role="MaterialType" Type="PragatiDbModel.Store.MaterialType" Multiplicity="0..1" />
+    <End Role="AllMaterials" Type="PragatiDbModel.Store.AllMaterials" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MaterialType">
+        <PropertyRef Name="MaterialTypeId" />
+      </Principal>
+      <Dependent Role="AllMaterials">
+        <PropertyRef Name="MaterialTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AllMaterials_SubKasab">
+    <End Role="Sub_Kasab" Type="PragatiDbModel.Store.Sub_Kasab" Multiplicity="0..1" />
+    <End Role="AllMaterials" Type="PragatiDbModel.Store.AllMaterials" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sub_Kasab">
+        <PropertyRef Name="Sub_KasabId" />
+      </Principal>
+      <Dependent Role="AllMaterials">
+        <PropertyRef Name="Sub_KasabId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Customer_UserId">
+    <End Role="User" Type="PragatiDbModel.Store.User" Multiplicity="0..1" />
+    <End Role="Customer" Type="PragatiDbModel.Store.Customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Customer">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CustomerPaidHistory_Customer">
+    <End Role="Customer" Type="PragatiDbModel.Store.Customer" Multiplicity="0..1" />
+    <End Role="CustomerPaidHistory" Type="PragatiDbModel.Store.CustomerPaidHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CustomerId" />
+      </Principal>
+      <Dependent Role="CustomerPaidHistory">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CustomerPaidHistory_User">
+    <End Role="User" Type="PragatiDbModel.Store.User" Multiplicity="0..1" />
+    <End Role="CustomerPaidHistory" Type="PragatiDbModel.Store.CustomerPaidHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="CustomerPaidHistory">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CustomerPayableAmount_Customer">
+    <End Role="Customer" Type="PragatiDbModel.Store.Customer" Multiplicity="0..1" />
+    <End Role="CustomerPayableAmount" Type="PragatiDbModel.Store.CustomerPayableAmount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CustomerId" />
+      </Principal>
+      <Dependent Role="CustomerPayableAmount">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CustomerPayableAmount_User">
+    <End Role="User" Type="PragatiDbModel.Store.User" Multiplicity="0..1" />
+    <End Role="CustomerPayableAmount" Type="PragatiDbModel.Store.CustomerPayableAmount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="CustomerPayableAmount">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Invoice_Customer">
+    <End Role="Customer" Type="PragatiDbModel.Store.Customer" Multiplicity="0..1" />
+    <End Role="Invoice" Type="PragatiDbModel.Store.Invoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CustomerId" />
+      </Principal>
+      <Dependent Role="Invoice">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Invoice_User">
+    <End Role="User" Type="PragatiDbModel.Store.User" Multiplicity="0..1" />
+    <End Role="Invoice" Type="PragatiDbModel.Store.Invoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Invoice">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MonthlyInvoice_Customer">
+    <End Role="Customer" Type="PragatiDbModel.Store.Customer" Multiplicity="0..1" />
+    <End Role="MonthlyInvoice" Type="PragatiDbModel.Store.MonthlyInvoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CustomerId" />
+      </Principal>
+      <Dependent Role="MonthlyInvoice">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MonthlyInvoice_User">
+    <End Role="User" Type="PragatiDbModel.Store.User" Multiplicity="0..1" />
+    <End Role="MonthlyInvoice" Type="PragatiDbModel.Store.MonthlyInvoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="MonthlyInvoice">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sale_Customer">
+    <End Role="Customer" Type="PragatiDbModel.Store.Customer" Multiplicity="0..1" />
+    <End Role="Sale" Type="PragatiDbModel.Store.Sale" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CustomerId" />
+      </Principal>
+      <Dependent Role="Sale">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sale_Invoice">
+    <End Role="Invoice" Type="PragatiDbModel.Store.Invoice" Multiplicity="0..1" />
+    <End Role="Sale" Type="PragatiDbModel.Store.Sale" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Invoice">
+        <PropertyRef Name="InvoiceId" />
+      </Principal>
+      <Dependent Role="Sale">
+        <PropertyRef Name="InvoiceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sale_Material">
+    <End Role="AllMaterials" Type="PragatiDbModel.Store.AllMaterials" Multiplicity="0..1" />
+    <End Role="Sale" Type="PragatiDbModel.Store.Sale" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AllMaterials">
+        <PropertyRef Name="MaterialId" />
+      </Principal>
+      <Dependent Role="Sale">
+        <PropertyRef Name="MaterialId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sale_Stock">
+    <End Role="Stock" Type="PragatiDbModel.Store.Stock" Multiplicity="0..1" />
+    <End Role="Sale" Type="PragatiDbModel.Store.Sale" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Stock">
+        <PropertyRef Name="StockId" />
+      </Principal>
+      <Dependent Role="Sale">
+        <PropertyRef Name="StockId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sale_User">
+    <End Role="User" Type="PragatiDbModel.Store.User" Multiplicity="0..1" />
+    <End Role="Sale" Type="PragatiDbModel.Store.Sale" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Sale">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Stock_AllMaterials">
+    <End Role="AllMaterials" Type="PragatiDbModel.Store.AllMaterials" Multiplicity="0..1" />
+    <End Role="Stock" Type="PragatiDbModel.Store.Stock" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AllMaterials">
+        <PropertyRef Name="MaterialId" />
+      </Principal>
+      <Dependent Role="Stock">
+        <PropertyRef Name="MaterialId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Stock_MaterialType">
+    <End Role="MaterialType" Type="PragatiDbModel.Store.MaterialType" Multiplicity="0..1" />
+    <End Role="Stock" Type="PragatiDbModel.Store.Stock" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MaterialType">
+        <PropertyRef Name="MaterialTypeId" />
+      </Principal>
+      <Dependent Role="Stock">
+        <PropertyRef Name="MaterialTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Stock_SubKasab">
+    <End Role="Sub_Kasab" Type="PragatiDbModel.Store.Sub_Kasab" Multiplicity="0..1" />
+    <End Role="Stock" Type="PragatiDbModel.Store.Stock" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sub_Kasab">
+        <PropertyRef Name="Sub_KasabId" />
+      </Principal>
+      <Dependent Role="Stock">
+        <PropertyRef Name="Sub_KasabId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Stock_SubMaterialType">
+    <End Role="SubMaterialType" Type="PragatiDbModel.Store.SubMaterialType" Multiplicity="0..1" />
+    <End Role="Stock" Type="PragatiDbModel.Store.Stock" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SubMaterialType">
+        <PropertyRef Name="SubMaterialTypeId" />
+      </Principal>
+      <Dependent Role="Stock">
+        <PropertyRef Name="SubMaterialTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Stock_User">
+    <End Role="User" Type="PragatiDbModel.Store.User" Multiplicity="0..1" />
+    <End Role="Stock" Type="PragatiDbModel.Store.Stock" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Stock">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sub_Accralic_MaterialType">
+    <End Role="MaterialType" Type="PragatiDbModel.Store.MaterialType" Multiplicity="0..1" />
+    <End Role="Sub_Accralic" Type="PragatiDbModel.Store.Sub_Accralic" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MaterialType">
+        <PropertyRef Name="MaterialTypeId" />
+      </Principal>
+      <Dependent Role="Sub_Accralic">
+        <PropertyRef Name="MaterialTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sub_FizingPaper_MaterialType">
+    <End Role="MaterialType" Type="PragatiDbModel.Store.MaterialType" Multiplicity="0..1" />
+    <End Role="Sub_FizingPaper" Type="PragatiDbModel.Store.Sub_FizingPaper" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MaterialType">
+        <PropertyRef Name="MaterialTypeId" />
+      </Principal>
+      <Dependent Role="Sub_FizingPaper">
+        <PropertyRef Name="MaterialTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sub_Kasab_MaterialType">
+    <End Role="MaterialType" Type="PragatiDbModel.Store.MaterialType" Multiplicity="1" />
+    <End Role="Sub_Kasab" Type="PragatiDbModel.Store.Sub_Kasab" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="MaterialType">
+        <PropertyRef Name="MaterialTypeId" />
+      </Principal>
+      <Dependent Role="Sub_Kasab">
+        <PropertyRef Name="Sub_KasabId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SubMaterialType_MaterialType">
+    <End Role="MaterialType" Type="PragatiDbModel.Store.MaterialType" Multiplicity="0..1" />
+    <End Role="SubMaterialType" Type="PragatiDbModel.Store.SubMaterialType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MaterialType">
+        <PropertyRef Name="MaterialTypeId" />
+      </Principal>
+      <Dependent Role="SubMaterialType">
+        <PropertyRef Name="MaterialTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

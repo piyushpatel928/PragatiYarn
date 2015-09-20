@@ -1,0 +1,116 @@
+﻿@model PragatiYarn.Models.ViewModel.CustomerCreditViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CustomersCreditReport</title>
+    <link href="~/Content/css/Site.css" rel="stylesheet" />
+    <link href="~/Content/css/Site.print.css" rel="stylesheet" />
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/css/bootstrap.print.css" rel="stylesheet" />
+    <script src="~/Content/script/jquery-1.10.2.js"></script>
+    <script src="~/Content/script/jquery-ui.js"></script>
+</head>
+<body>
+    <span>@ViewBag.message </span>
+    <div style="width: 100%">
+        <table style="border: none; width: 100%;">
+            <tr>
+                <td style="width: 100%">
+                    <div class="container-fluid">
+
+                        <table class="invoiceHeader" style="width: 100%;">
+                            <tr>
+                                <td>
+                                    <img src="@Url.Content("~/Content/images/logo.png")" style="float:left;" />
+                                </td>
+                               
+                            </tr>
+                        </table>
+                    </div>
+
+                    <table style="width: 100%">
+                        <tr>
+                            <td style="width: 65%">
+                                <h3><strong>Customers Credit Report</strong></h3>
+                                <blockquote>
+                                </blockquote>
+
+                               
+                                <blockquote>
+                                    <p>
+                                    </p>
+
+                                </blockquote>
+
+                            </td>
+                            <td>
+                                <h3>Date :
+                                <strong>@Model.DateTime</strong></h3>
+                                <br />
+                            </td>
+                        </tr>
+                    </table>
+
+                    <table class="zebra-striped" style="width: 100%; min-height: 254px;">
+                        <thead>
+                            <th style="width: 38%;">Customer Name
+                            </th>
+                            <th style="width: 23%">Firm Name
+                            </th>
+                            <th style="width: 10%;">Mobile No
+                            </th>
+                            <th style="width: 6.1%;">Amount
+                            </th>
+                            
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.lstaccvm)
+                            {
+                               
+
+                                <tr style="height: 30px;">
+                                    <td style="border: none;">
+                                        @Html.DisplayFor(modelItem => item.CustomerName)
+                                    </td>
+                                    <td style="border: none;">
+                                        @Html.DisplayFor(modelItem => item.FirmName)
+                                    </td>
+                                    <td style="border: none;">
+                                        @Html.DisplayFor(modelItem => item.MobileNo)
+                                    </td>
+                                    <td style="border: none;">
+                                        <span>₹@item.Amount</span>
+                                    </td>
+                                    
+
+                                </tr>
+                            }
+                            <tr></tr>
+                            <tr></tr>
+                            <tr></tr>
+                            <tr></tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td class="invoiceFooterTitle" style="border: none; border-top: 1px solid #ddd;"></td>
+                                <td style="border: none; border-top: 1px solid #ddd; text-align: right"></td>
+
+                                <td style="border-top: 1px solid #ddd;">Total Amount:</td>
+
+                                <td style="border-top: 1px solid #ddd;"><strong><span>₹ @Model.TotalAmount</span></strong></td>
+
+                            </tr>
+                        </tfoot>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

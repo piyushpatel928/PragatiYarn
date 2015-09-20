@@ -1,0 +1,276 @@
+﻿@model PragatiYarn.Models.ViewModel.ChalanViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Chalan</title>
+    <link href="~/Content/css/Site.css" rel="stylesheet" />
+    <link href="~/Content/css/Site.print.css" rel="stylesheet" />
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/css/bootstrap.print.css" rel="stylesheet" />
+</head>
+<body>
+    <div style="width: 100%">
+
+        <table style="border: none; width: 100%;">
+            <tr>
+                <td style="width: 50%">
+                    <div class="container-fluid">
+
+                        <table class="invoiceHeader" style="width: 50%;">
+                            <tr>
+                                <td>
+                                    <img src="@Url.Content("~/Content/images/logo.png")" style="float:left;" />
+                                </td>
+                                @* <td style="text-align: right">
+                    <h2>@string.Format(@Resources.Print.Invoice_Number, @Model.ChalanId, DateTime.Now.Year)</h2>
+                    @Model.TimeStamp.ToLongDateString()
+                </td>*@
+                            </tr>
+                        </table>
+                    </div>
+
+                    <table style="width: 100%">
+                        <tr>
+                            <td style="width: 65%">
+                                <h3>M/s :  <strong>@Model.CustomerFirmName</strong></h3>
+                                <blockquote>
+                                </blockquote>
+
+                                <h3>Name: <strong>
+                                    @Html.DisplayFor(model => model.CustomerName)
+                                </strong></h3>
+                                <blockquote>
+                                    <p>
+                                    </p>
+
+                                </blockquote>
+
+                            </td>
+                            <td>
+                                <h3>Date :</h3>
+                                <strong>@Html.DisplayFor(model => model.Date)</strong>
+
+                                <br />
+
+                                <h3>Chalan No : <strong>
+                                    @Html.DisplayFor(model => model.ChalanId)
+                                </strong></h3>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <table class="zebra-striped" style="width: 100%; min-height: 254px;">
+                        <thead>
+                            <th style="width: 0.1%;">Type
+                            </th>
+                            <th style="width: 40%">Item Name
+                            </th>
+                            <th style="width: 0.1%;">Pcs
+                            </th>
+                            <th style="width: 0.1%;">Rate
+                            </th>
+                            <th style="width: 0.1%;">Amount
+                            </th>
+                            @*<th width="100">
+                @Resources.Print.Invoice_Total
+            </th>
+            @if (ViewBag.Print != true)
+            {
+
+                <th width="100"></th>
+            }*@
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Items)
+                            {
+                                //var invoiceDetail = "invoiceDetail" + item.InvoiceDetailsID; 
+
+                                <tr style="height: 30px;">
+                                    <td style="border: none;">
+                                        @Html.DisplayFor(modelItem => item.ItemName)
+                                    </td>
+                                    <td style="border: none;">
+                                        @Html.DisplayFor(modelItem => item.lstsubitems)
+
+                                    </td>
+                                    <td style="border: none;">
+
+
+                                        @if (item.ItemName.Length == 1)
+                                        {
+                                            @Html.DisplayFor(modelItem => item.totpiece)<span> Kg</span>  
+                                        }
+                                        else
+                                        {
+                                            @Html.DisplayFor(modelItem => item.totpiece)  
+                                            
+                                        }
+
+                                    </td>
+
+                                    <td style="border: none;">
+                                        @*@String.Format("{0:C}", item.Rate)*@
+                                        <span>₹@item.Rate</span>
+                                    </td>
+                                    <td style="border: none;">
+
+                                        <span>₹@item.totAmount</span>
+                                        @*@Html.DisplayFor(modelItem => item.ItemName)*@
+                                    </td>
+
+                                </tr>
+                            }
+                            <tr></tr>
+                            <tr></tr>
+                            <tr></tr>
+                            <tr></tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td class="invoiceFooterTitle" style="border: none; border-top: 1px solid #ddd;"></td>
+                                <td style="border: none; border-top: 1px solid #ddd;"></td>
+                                <td style="border: none; border-top: 1px solid #ddd;"></td>
+                                <td style="border-top: 1px solid #ddd;">Total Amount:</td>
+
+                                <td style="border-top: 1px solid #ddd;"><strong><span>₹@Model.TotalAmount</span></strong></td>
+
+                            </tr>
+                        </tfoot>
+                    </table>
+                </td>
+                <td>
+                    <div class="container-fluid">
+
+                        <table class="invoiceHeader" style="width: 50%;">
+                            <tr>
+                                <td>
+                                    <img src="@Url.Content("~/Content/images/logo.png")" style="float:left;" />
+                                </td>
+                                @* <td style="text-align: right">
+                    <h2>@string.Format(@Resources.Print.Invoice_Number, @Model.ChalanId, DateTime.Now.Year)</h2>
+                    @Model.TimeStamp.ToLongDateString()
+                </td>*@
+                            </tr>
+                        </table>
+                    </div>
+
+
+                    <table style="width: 100%">
+                        <tr>
+                            <td style="width: 65%">
+                                <h3>M/s :  <strong>@Model.CustomerFirmName</strong></h3>
+                                <blockquote>
+                                </blockquote>
+
+                                <h3>Name: <strong>
+                                    @Html.DisplayFor(model => model.CustomerName)
+                                </strong></h3>
+                                <blockquote>
+                                    <p>
+                                    </p>
+
+                                </blockquote>
+
+                            </td>
+                            <td>
+                                <h3>Date :</h3>
+                                <strong>@Html.DisplayFor(model => model.Date)</strong>
+
+                                <br />
+
+                                <h3>Chalan No : <strong>
+                                    @Html.DisplayFor(model => model.ChalanId)
+                                </strong></h3>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <table class="zebra-striped" style="width: 100%; min-height: 254px;">
+                        <thead>
+                            <th style="width: 5%;">Type
+                            </th>
+                            <th style="width: 40%">Item Name
+                            </th>
+                            <th style="width: 1%;">Pcs
+                            </th>
+                            <th style="width: 1%;">Rate
+                            </th>
+                            <th style="width: 1%;">Amount
+                            </th>
+                            @*<th width="100">
+                @Resources.Print.Invoice_Total
+            </th>
+            @if (ViewBag.Print != true)
+            {
+
+                <th width="100"></th>
+            }*@
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Items)
+                            {
+                                //var invoiceDetail = "invoiceDetail" + item.InvoiceDetailsID; 
+
+                                <tr style="height: 30px;">
+                                    <td style="border: none;">
+                                        @Html.DisplayFor(modelItem => item.ItemName)
+                                    </td>
+                                    <td style="border: none;">
+                                        @Html.DisplayFor(modelItem => item.lstsubitems)
+                                    </td>
+                                    <td style="border: none;">
+                                        @if (item.ItemName.Length == 1)
+                                        {
+                                            @Html.DisplayFor(modelItem => item.totpiece)<span> Kg</span>    
+                                        }
+                                        else
+                                        {
+                                            @Html.DisplayFor(modelItem => item.totpiece)  
+                                            
+                                        }
+
+                                    </td>
+
+                                    <td style="border: none;">
+                                        @*@String.Format("{0:C}", item.Rate)*@
+                                        <span>₹@item.Rate</span>
+                                    </td>
+                                    <td style="border: none;">
+
+                                        <span>₹@item.totAmount</span>
+                                        @*@Html.DisplayFor(modelItem => item.ItemName)*@
+                                    </td>
+
+                                </tr>
+                            }
+                            <tr></tr>
+                            <tr></tr>
+                            <tr></tr>
+                            <tr></tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td class="invoiceFooterTitle" style="border: none; border-top: 1px solid #ddd;"></td>
+                                <td style="border: none; border-top: 1px solid #ddd;"></td>
+                                <td style="border: none; border-top: 1px solid #ddd;"></td>
+                                <td style="border-top: 1px solid #ddd;">Total Amount:</td>
+
+                                <td style="border-top: 1px solid #ddd;"><strong><span>₹@Model.TotalAmount</span></strong></td>
+
+                            </tr>
+                        </tfoot>
+                    </table>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+
+</body>
+</html>

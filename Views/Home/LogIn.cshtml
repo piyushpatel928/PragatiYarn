@@ -1,0 +1,95 @@
+﻿@model PragatiYarn.Models.ViewModel.LoginViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>LogIn</title>
+    <link href="~/Content/css/animate-custom.css" rel="stylesheet" />
+    <link href="~/Content/css/demo.css" rel="stylesheet" />
+    <link href="~/Content/css/style.css" rel="stylesheet" />
+    <script src="~/Content/script/jquery-1.10.2.js"></script>
+    <script src="~/Content/script/bootstrap.js"></script>
+    <script src="~/Content/script/jquery.validate.min.js"></script>
+    <script src="~/Content/script/jquery.validate.unobtrusive.min.js"></script>
+    <script>
+
+        var addthis_config = {
+            data_track_addressbar: false
+        };
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="codrops-top">
+
+
+            <div class="clr"></div>
+        </div>
+
+        <section>
+            <div id="container_demo">
+                <a class="hiddenanchor" id="toregister"></a>
+                <a class="hiddenanchor" id="tologin"></a>
+                <div id="wrapper" style="margin-top: 10%">
+                    <span>@ViewBag.Message</span>
+                    <div id="login" class="animate form">
+                        @using (Html.BeginForm("LogIn", "Home", FormMethod.Post))
+                        {
+                            <h1>Log in</h1>
+                            <p>
+                                <label for="username" class="uname" data-icon="u">Your username </label>
+                                @Html.TextBoxFor(a => a.Username, new { @placeholder = "UserName", @id = "txt2Username", @required="required"})
+                                @Html.ValidationMessageFor(m => m.Username, "", new { @style = "color:red" })<br />
+
+                            </p>
+                            <p>
+                                <label for="password" class="youpasswd" data-icon="p">Your password </label>
+                                @Html.TextBoxFor(a => a.Password, new { @placeholder = "Password", @Type = "password", @id = "txt2Pass", @required="required" })
+                                @Html.ValidationMessageFor(m => m.Password, "", new { @style = "color:red" })<br />
+                            </p>
+                          
+                            <p class="login button">
+                                <input type="submit" value="Login" />
+                            </p>
+                            @* <p class="change_link">
+                                Not a member yet ?
+									<a href="#toregister" class="to_register">Join us</a>
+                            </p>*@
+                        }
+                    </div>
+
+
+                </div>
+            </div>
+        </section>
+    </div>
+    @* <div style="margin-top: 10%; margin-left: 30%">
+        <h2 style="margin-left: 12%">Log In</h2>
+        <br />
+        <span style="color: green;">@ViewBag.Message</span>
+        @using (Html.BeginForm("LogIn", "Home", FormMethod.Post))
+        {
+            <div class="clearfix">
+                @Html.ValidationMessageFor(m => m.Username, "", new { @style = "color:red" })<br />
+
+                @Html.LabelFor(a => a.Username)
+                @Html.TextBoxFor(a => a.Username, new { @placeholder = "UserName", @id = "txt2Username", @style = "margin-left: 5%;width:20%;" })
+            </div>
+
+            <div class="clearfix">
+                @Html.ValidationMessageFor(m => m.Password, "", new { @style = "color:red" })<br />
+                @Html.LabelFor(a => a.Password)
+                @Html.TextBoxFor(a => a.Password, new { @placeholder = "Password", @Type = "password", @id = "txt2Pass", @style = "margin-left: 5.4%;width:20%;" })
+            </div>
+            <br />
+            <button class="btn btn-primary" style="width: 20.5%; margin-left: 13.5%;" type="submit" id="signupbtn">Log In</button>
+        }
+
+    </div>*@
+</body>
+</html>

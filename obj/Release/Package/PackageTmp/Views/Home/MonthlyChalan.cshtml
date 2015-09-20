@@ -1,0 +1,123 @@
+﻿@model PragatiYarn.Models.ViewModel.MonthlyInvoiceViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Monthly Bill</title>
+    <link href="~/Content/css/Site.css" rel="stylesheet" />
+    <link href="~/Content/css/Site.print.css" rel="stylesheet" />
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/css/bootstrap.print.css" rel="stylesheet" />
+</head>
+<body>
+
+
+    <div class="container-fluid" style="width: 100%;">
+
+        <table class="invoiceHeader" style="width: 100%;">
+            <tr>
+                <td>
+                    <img src="@Url.Content("~/Content/images/logo.png")" style="float:left;" />
+                </td>
+                @* <td style="text-align: right">
+                    <h2>@string.Format(@Resources.Print.Invoice_Number, @Model.ChalanId, DateTime.Now.Year)</h2>
+                    @Model.TimeStamp.ToLongDateString()
+                </td>*@
+            </tr>
+        </table>
+    </div>
+
+    <table style="width: 100%;">
+        <tr>
+            <td width="65%">
+                <h3>Invoice To :  <strong>@Model.CustomerFirmName</strong></h3>
+                <blockquote>
+                </blockquote>
+
+                <h3>Date :</h3>
+                <strong>Bill From to Date:  @Html.DisplayFor(model => model.FromDate) to  @Html.DisplayFor(model => model.ToDate)</strong>
+
+                
+               
+                <blockquote>
+                    <p>
+                    </p>
+
+                </blockquote>
+
+            </td>
+            <td>
+                <h3>Customer Name: <strong>&nbsp;&nbsp;
+                            @Html.DisplayFor(model => model.CustomerName) </strong></h3>
+
+                <br />
+                <br />
+
+                <h3>Bill No : <strong>&nbsp;&nbsp;
+                            @Html.DisplayFor(model => model.BillId)
+                </strong></h3>
+            </td>
+        </tr>
+    </table>
+
+    <table class="zebra-striped" style="width: 100%;min-height:254px;">
+        <thead>
+            <th >Chalan No
+            </th>
+            <th >Chalan Date
+            </th>
+            
+            <th>Amount
+            </th>
+           
+        </thead>
+        <tbody >
+            @foreach (var item in Model.lstChalans)
+            {
+                //var invoiceDetail = "invoiceDetail" + item.InvoiceDetailsID; 
+
+                <tr>
+                   
+                    <td style="border: none;">
+                        @Html.DisplayFor(modelItem => item.ChalanId)
+                    </td>
+                     <td style="border: none;">
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                                        
+                    <td style="border: none;">
+
+                        <span>₹@item.Amount</span>
+                        @*@Html.DisplayFor(modelItem => item.ItemName)*@
+                    </td>
+
+                </tr>
+            }
+            <tr></tr>
+            <tr></tr>
+            <tr></tr>
+            <tr></tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td class="invoiceFooterTitle" style="border: none; border-top: 1px solid #ddd;"></td>
+               
+                <td style="border-top: 1px solid #ddd;">Total Amount:</td>
+
+                <td style="border-top: 1px solid #ddd;"><strong><span>₹@Model.TotalAmount</span></strong></td>
+
+            </tr>
+        </tfoot>
+    </table>
+
+    <br />
+     <br /> <br /> <br /> <br />
+
+     
+</body>
+</html>

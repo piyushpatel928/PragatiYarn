@@ -1,0 +1,323 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>View Materials</title>
+    @*<link href="~/Content/css/bootstrap.css" rel="stylesheet" />*@
+    <link href="~/Content/css/960.css" rel="stylesheet" />
+    <link href="~/Content/css/template.css" rel="stylesheet" />
+    <link href="~/Content/css/colour.css" rel="stylesheet" />
+    <link href="~/Content/css/jquery-ui.css" rel="stylesheet" />
+    <link href="~/Content/css/jmenu.css" rel="stylesheet" />
+    @*<link href="~/Content/css/demo_page.css" rel="stylesheet" />
+    <link href="~/Content/css/demo_table.css" rel="stylesheet" />
+    <link href="~/Content/css/jquery.dataTables.css" rel="stylesheet" />*@
+    <script src="~/Content/script/jquery-1.10.2.js"></script>
+    <script src="~/Content/script/jquery-ui.js"></script>
+    <script src="~/Content/script/jMenu.jquery.js"></script>
+    <script src="~/Content/script/JQDataTable.js"></script>
+    <script src="~/Content/script/bootstrap.js"></script>
+    <script src="~/Content/script/jquery.validate.min.js"></script>
+    <script src="~/Content/script/jquery.validate.unobtrusive.min.js"></script>
+    <script>
+
+        $(function () {
+            $('#tblData tr').click(function () {
+                try {
+                    if ($.inArray($(this).children('td')[0].children[0].value, IdArray) == -1) {
+                        IdArray.push($(this).children('td')[0].children[0].value);
+                    }
+                    else {
+                        IdArray.splice($.inArray($(this).children('td')[0].children[0].value, IdArray), 1);
+                    }
+                }
+                catch (exp) {
+                }
+            });
+
+            $("#tblData tbody tr").click(function (e) {
+                if ($(this).hasClass('row_selected')) {
+                    $(this).removeClass('row_selected');
+                }
+                else {
+                    oTable.$('tr.row_selected').removeClass('row_selected');
+                    $(this).addClass('row_selected');
+                }
+            });
+
+            oTable = $('#tblData').dataTable({
+
+                //"bPaginate": false,
+                "bInfo": false,
+                columns: [
+        { data: 'matcode' },
+        { data: 'matimg' },
+        { data: 'datetime' },
+        { data: 'deleteopt' }
+                ]
+
+            });
+            $("thead input").keyup(function () {
+                /* Filter on the column (the index) of this element */
+                oTable.fnFilter(this.value, $("thead input").index(this));
+            });
+            //$(".dataTables_length").remove();
+            //$(".dataTables_filter").remove();
+
+
+            $(".odd").remove();
+            $("thead input").each(function (i) {
+                //asInitVals[i] = this.value;
+            });
+
+            $("thead input").focus(function () {
+                if (this.className == "search_init") {
+                    this.className = "";
+                    this.value = "";
+                }
+            });
+
+            $("thead input").blur(function (i) {
+                if (this.value == "") {
+                    this.className = "search_init";
+                    // this.value = asInitVals[$("tfoot input").index(this)];
+                }
+            });
+        });
+    </script>
+    <script>
+        var UserId = parseInt(@Session["UserId"].ToString());
+        var MainMaterialId;
+        var subMaterialId;
+        var ItemArray = new Array();
+        $(function () {
+            $("#jMenu").jMenu();
+
+            // more complex jMenu plugin called
+            $("#jMenu").jMenu({
+                openClick: false,
+                ulWidth: "10%",
+                effects: {
+                    effectSpeedOpen: 150,
+                    effectSpeedClose: 150,
+                    effectTypeOpen: 'slide',
+                    effectTypeClose: 'slide',
+                    effectOpen: 'linear',
+                    effectClose: 'linear'
+                },
+                TimeBeforeOpening: 100,
+                TimeBeforeClosing: 11,
+                animatedText: false,
+                paddingLeft: 1
+            });
+
+            $.ajax({
+                url: "../../api/getallmaterialforstockapi/Get/",
+                type: "GET",
+                dataType: 'json',
+                success: function (data) {
+                    $("#main_material").append("<option>Select Type Of Material</option>");
+                    for (var i in data) {
+                        $("#main_material").append("<option value='" + data[i].MaterialTypeId + "'>" + data[i].MaterialTypeName + " </option>")
+                    }
+                }
+            });
+
+            $(document).on('change', "#main_material", function () {
+                $(".dataTables_empty").hide();
+                MainMaterialId = $(this).val();
+                $("#select_material").empty();
+                $("#selectmaterial").hide();
+
+                $("#sub_material").empty();
+                $("#submaterial").hide();
+                if ($(this).val() == 3) {
+
+                    var c = $(this).val();
+
+                    $.ajax({
+                        url: "../../api/getallmaterialapi/Get/",
+                        data: { "TypeId": $(this).val() },
+                        type: "GET",
+                        dataType: 'json',
+                        success: function (data) {
+                            $("#submaterial").show();
+                            $("#sub_material").append("<option> Select Your Sub Material Type </option>");
+                            for (var i in data) {
+
+                                $("#sub_material").append("<option value='" + data[i].SubMaterialTypeId + "'>" + data[i].SubMaterialTypeName + " </option>")
+                            }
+
+                        }
+                    });
+
+                }
+                else {
+                    var c = $(this).val();
+
+                    $.ajax({
+                        url: "../../api/getallmaterialapi/Get/",
+                        data: { "TypeId": $(this).val(), "SubTypeId": 0 },
+                        type: "GET",
+                        dataType: 'json',
+                        success: function (data) {
+                            $("#materialsdiv").show();
+                            $("#tbodydata").empty();
+                            for (var i in data) {
+                                var path = data[i].MaterialImagePath;
+                                var newpath = path.substring(1);
+                                //$("#tbodydata").append("<tr><td>" + data[i].MaterialCode + " </td><td> <img alt='#' height='50' width='100' src='" + newpath + "' style='vertical-align: middle;' /></td><td>" + data[i].Datetime + "</td><td><a href='/Home/DeleteMaterial/" + data[i].MaterialId + "' title='Delete' style='text-decorection:none'><img src='../Content/images/ico18.png' /></a> </td></tr>");
+                                //ItemArray.push({ matcode: data[i].MaterialCode, matimg: "<img alt='#' height='50' width='100' src='" + newpath + "' style='vertical-align: middle; />", datetime: data[i].Datetime, deleteopt: "<a href='/Home/DeleteMaterial/" + data[i].MaterialId + "'  title='Delete' style='text-decorection:none'><img src='../Content/images/ico18.png' /></a>" });
+                                $('#tblData').dataTable().fnAddData([data[i].MaterialCode, "<img alt='#' height='50' width='100' src='" + newpath + "' style='vertical-align: middle'; />", data[i].Datetime, "<a href='/Home/DeleteMaterial/" + data[i].MaterialId + "'  title='Delete' style='text-decorection:none'><img src='../Content/images/ico18.png' /></a>/<a href='/Home/EditMaterial/" + data[i].MaterialId + "'  title='Delete' style='text-decorection:none'><img src='../Content/images/ico17.png' /></a>"]);
+                                // $("#tbodydata").append("<tr><td>" + data[i].MaterialCode + " </td><td> <img alt='#' height='50' width='100' src='" + newpath + "' style='vertical-align: middle;' /></td><td>" + data[i].Datetime + "</td><td><a href='/Home/DeleteMaterial/" + data[i].MaterialId + "'  title='Delete' style='text-decorection:none'><img src='../Content/images/ico18.png' /></a> </td></tr>");
+                            }
+                            //$('#tblData').dataTable().fnAddData(ItemArray);
+                           // oTable.row.Add(ItemArray).draw();
+                            //$('#tblData').DataTable({
+                            //    data: ItemArray,
+                            //    columns: [
+                            //        { data: 'matcode' },
+                            //        { data: 'matimg' },
+                            //        { data: 'datetime' },
+                            //        { data: 'deleteopt' }
+                            //    ]
+                            //});
+                        }
+                    });
+                }
+
+            });
+
+            $(document).on('change', "#sub_material", function () {
+                var MaterialTypeid = $("#main_material").val();
+                subMaterialId = $("#sub_material").val();
+                $.ajax({
+                    url: "../../api/getallmaterialapi/Get/",
+                    data: { "TypeId": MaterialTypeid, "SubTypeId": subMaterialId },
+                    type: "GET",
+                    dataType: 'json',
+                    success: function (data) {
+
+                        $("#materialsdiv").show();
+                        $("#tbodydata").empty();
+                        for (var i in data) {
+                            var path = data[i].MaterialImagePath;
+                            var newpath = path.substring(1);
+                            //ItemArray.push({ matcode: data[i].MaterialCode, matimg: "<img alt='#' height='50' width='100' src='" + newpath + "' style='vertical-align: middle; />", datetime: data[i].Datetime, deleteopt: "<a href='/Home/DeleteMaterial/" + data[i].MaterialId + "'  title='Delete' style='text-decorection:none'><img src='../Content/images/ico18.png' /></a>" });
+                            $('#tblData').dataTable().fnAddData([data[i].MaterialCode, "<img alt='#' height='50' width='100' src='" + newpath + "' style='vertical-align: middle'; />", data[i].Datetime, "<a href='/Home/DeleteMaterial/" + data[i].MaterialId + "'  title='Delete' style='text-decorection:none'><img src='../Content/images/ico18.png' /></a>/<a href='/Home/EditMaterial/" + data[i].MaterialId + "'  title='Delete' style='text-decorection:none'><img src='../Content/images/ico17.png' /></a>"]);
+                            // $("#tbodydata").append("<tr><td>" + data[i].MaterialCode + " </td><td> <img alt='#' height='50' width='100' src='" + newpath + "' style='vertical-align: middle;' /></td><td>" + data[i].Datetime + "</td><td><a href='/Home/DeleteMaterial/" + data[i].MaterialId + "'  title='Delete' style='text-decorection:none'><img src='../Content/images/ico18.png' /></a> </td></tr>");
+                        }
+                        
+                    }
+                });
+
+            });
+        });
+    </script>
+    
+    <style>
+
+        tblData_length {
+            width:80px;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="head">Pragati Yarn  <a href="/Home/LogOut" style="float: right">Log Out</a></h1>
+    <div id="navigation">
+        <ul id="jMenu">
+            <li><a>Customer</a>
+                <ul>
+                    <li><a href="/Home/ViewCustomers" style="text-decoration: none">View Customers</a></li>
+                    <li><a href="/Home/AddCustomer" style="text-decoration: none">Add Customer</a></li>
+                    <li><a href="/Home/Payment" style="text-decoration: none">Add Customer Payment</a></li>
+                    <li>
+                    <li><a href="/Home/CustomerPayment" style="text-decoration: none">Customer Credit Report</a></li>
+                    <li><a href="/Home/PaymentHistory" style="text-decoration: none">Payment History</a></li>
+                    <li><a href="/Home/AddCustomerCredit" style="text-decoration: none">Add Customer Credit</a></li>
+
+                </ul>
+            </li>
+            <li><a>Stocks</a>
+                <ul>
+                    <li><a href="/Home/AddStock" style="text-decoration: none">Add Stocks</a></li>
+                    <li><a href="/Home/ViewStocks" style="text-decoration: none">View Stocks</a></li>
+
+                </ul>
+            </li>
+            <li><a>Materials</a>
+                <ul>
+                    <li><a href="/Home/AddNewMaterial" style="text-decoration: none">Add Material</a></li>
+                    <li><a href="/Home/ViewMaterials" style="text-decoration: none">View Materials</a></li>
+
+                </ul>
+            </li>
+            @if (int.Parse(Session["UserId"].ToString()) == 1)
+            {
+                <li><a href="/Home/AddUser" style="text-decoration: none">Add New User</a></li>
+            
+            }
+            <li><a>Sale</a>
+                <ul>
+                    <li><a href="/Home/sales" style="text-decoration: none">Sales</a></li>
+                    <li><a href="/Home/ReturnSales" style="text-decoration: none">Return Sales</a></li>
+                    <li><a href="/Home/DailyInvoice" style="text-decoration: none">Daily Invoice</a></li>
+                    <li><a href="/Home/MonthlyInvoice" style="text-decoration: none">Monthly Invoice</a></li>
+
+                </ul>
+            </li>
+            @if (int.Parse(Session["UserId"].ToString()) == 1)
+            {
+                <li><a href="/Home/ChangeRate" style="text-decoration: none">Change Rate</a></li>
+            }
+        </ul>
+    </div>
+    <div id="content" class="container_16 clearfix">
+        <div class="grid_16">
+            <h2>View Materials</h2>
+        </div>
+        <span style="color: green; font-size: 18px;">@ViewBag.success </span>
+        <br />
+        <span style="color: red; font-size: 18px;">@ViewBag.error</span>
+        <br />
+        <div class="grid_5">
+            <p>
+                <label for="title">Select Material Type:</label>
+                <select id="main_material" name="MaterialId"></select><br />
+                <br />
+
+            </p>
+        </div>
+        <div class="grid_16" id="submaterial" style="display: none">
+            <p>
+                <label for="title">Select Sub Material Type:</label>
+                <select id="sub_material" name="SubMaterialId" style="width: 29%;"></select><br />
+                <br />
+
+            </p>
+        </div>
+        <div class="grid_16" id="materialsdiv" style="display: none">
+
+            <table cellpadding="0" cellspacing="0" border="0" id="tblData" style="font-size: 12px;">
+                <thead>
+                    <tr>
+                        <th>Material Code</th>
+                        <th>Material Image</th>
+                        <th>Added Datetime</th>
+                        <th>Delete/Edit</th>
+
+                    </tr>
+                </thead>
+                <tbody id="tbodydata">
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</body>
+</html>
